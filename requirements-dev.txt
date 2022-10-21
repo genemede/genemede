@@ -1,0 +1,9 @@
+black
+pytest
+flake8
+ipython
+matplotlib
+ipykernel
+wheels
+pip
+setuptools
