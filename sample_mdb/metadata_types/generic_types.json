@@ -1,0 +1,79 @@
+[
+    {
+        "guid": "",
+        "datetime": "",
+        "name": "",
+        "description": "Collection of definitions for high level terms.",
+        "mtype": "generic",
+        "resources": {},
+        "properties": {
+            "project": {
+                "description": "The project is the highest level of the hierarchy that includes all information, activities and measurements performed under it.",
+                "levels": null,
+                "units": null
+                },
+            "project_descriptors": {
+                "description": "Collection of metadata used to define a project.",
+                "levels": null,
+                "units": null
+                },
+            "setup": {
+                "description": "The setup includes everything that describes the physical setup used to perform the experiment.",
+                "levels": null,
+                "units": null
+                },
+            "setup_descriptors": {
+                "description": "Collection of metadata describing the physical setup used to perform an experiment. This includes information related to the laboratory to the list of devices involved.",
+                "levels": null,
+                "units": null
+                },
+            "task": {
+                "description": "The task includes all the activities performed by an agent in the context of a neuroscientific experiment.",
+                "levels": null,
+                "units": null
+                },
+            "task_descriptors": {
+                "description": "Collection of metadata describing the task performed by the subject in an experiment.",
+                "levels": null,
+                "units": null
+                },
+            "analysis": {
+                "description": "Analysis covers the set of terms that may be used to describe actions performed on the data in order to obtain neuroscientific results.",
+                "levels": null,
+                "units": null
+                },
+            "analysis_descriptors": {
+                "description": "Collection of metadata describing the analysis.",
+                "levels": null,
+                "units": null
+                },
+            "session": {
+                "description": "The session is a specific combination of project, setup and task that generates neuroscientific data. It describes what was done (task), how it was performed (setup) and in what context (project). It is the lowest category in the hierarchy.",
+                "levels": null,
+                "units": null
+                },
+            "study": {
+                "description": "A collection of procedures performed in a particular order and context consists of a study.",
+                "levels": null,
+                "units": null
+                },
+            "device": {
+                "description": "A physical instrument used as a part of a procedure e.g. amplifier, screen, computer",
+                "levels": null,
+                "units": null
+                },
+            "researcher": {
+                "description": "A human agent performing the experiment.",
+                "levels": null,
+                "units": null
+                },
+            "subject": {
+                "description": "A human or animal agent participating in the experiment.",
+                "levels": null,
+                "units": null
+                }                  
+        },
+        "custom": {},
+        "bids": {}
+    }
+] 
