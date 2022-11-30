@@ -7,7 +7,7 @@
 """
 
 import unittest
-from jsondb import *
+from genemede.jsondb import *
 
 
 class TestJsonDatabase(unittest.TestCase):
