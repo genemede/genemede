@@ -11,9 +11,9 @@
                 "description": "Type of the procedure performed.",
                 "levels": null,
                 "units": null
-            }
-        },
+            },
         "custom": {},
         "bids": {}
+        }
     }
 ]

@@ -4,13 +4,14 @@
         "name": "",
         "mtype": "lab",
         "datetime": "",
-        "description": "Category type for describing a laboratory.",
+        "description": "",
         "resources": {},
         "properties": {
             "official_name": {
                 "description": "Official name of the lab.",
                 "levels": null,
-                "units": null
+                "units": null,
+                "uri": "https://something.genemede_glossary.html#principal_investigator"
                 },
             "principal_investigator": {
                 "description": "Name of the principal investigator.",

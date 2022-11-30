@@ -2,6 +2,198 @@
     {
         "guid": "",
         "datetime": "",
+        "name": "group",
+        "description": "The type group is a collection of entities that represent an abstract class e.g. eye tracker camera, mount, and PC may comprise of an eye tracker group.",
+        "mtype": null,
+        "resources": [],
+        "properties": {},
+        "custom": {}
+    },
+    {
+        "guid": "",
+        "datetime": "",
+        "name": "sensor",
+        "description": "A sensor type is used to indicate any entity that senses / measures data.",
+        "mtype": null,
+        "resources": {},
+        "properties": {},
+        "custom": {}
+    },
+    {
+        "guid": "",
+        "datetime": "",
+        "name": "actuator",
+        "description": "An actuator type is used to indicate any entity that causes action / motion or change.",
+        "mtype": null,
+        "resources": {},
+        "properties": {},
+        "custom": {}
+    },
+    {
+        "guid": "",
+        "datetime": "",
+        "name": "electronics",
+        "description": "The electronics type is used to indicate any entity that contains electronic components.",
+        "mtype": null,
+        "resources": {},
+        "properties": {},
+        "custom": {}
+    },
+    {
+        "guid": "",
+        "datetime": "",
+        "name": "object",
+        "description": "The object type is used to indicate an entity that is a physical object.",
+        "mtype": null,
+        "resources": {},
+        "properties": {},
+        "custom": {}
+    },
+    {
+        "guid": "",
+        "name": "power_unit",
+        "description": "Generic Power Unit",
+        "mtype": null,
+        "resources": { "links": [""], "files": [""] },
+        "properties": {
+            "power_rating": {
+                "description": "Power rating of the device.",
+                "levels": null,
+                "units": "Watts"
+                },            
+            "input_voltage": {
+                "description": "Input voltage",
+                "levels": null,
+                "units": "Volts"
+                },
+            "output_voltage": {
+                "description": "Output voltage",
+                "levels": null,
+                "units": "Volts"
+                },
+            
+            "input_current": {
+                "description": "Input current",
+                "levels": null,
+                "units": "Amperes"
+                },            
+            "output_current": {
+                "description": "Output current",
+                "levels": null,
+                "units": "Amperes"
+                },
+            "line_frequency": {
+                "description": "Power line frequency the device is designed to handle",
+                "levels": null,
+                "units": "Hertz"
+                },
+            "primary_fuses": {
+                "description": "Primary fuses built into the device.",
+                "levels": null,
+                "units": null
+                },
+            "secondary_fuses": {
+                "description": "Secondary fuses built into the device.",
+                "levels": null,
+                "units": null
+                },
+            "fan_unit": {
+                "description": "Is a fan or cooling unit built into the device?",
+                "levels": null,
+                "units": "bool"
+                },
+            "location": {
+                "description": "Location of the given power unit with reference to another device or lab location.",
+                "levels": null,
+                "units": null
+                },
+            "is_isolated": {
+                "description": "Is the power supply unit isolated?",
+                "levels": null,
+                "units": "bool"
+                }
+        },
+        "custom": {}
+    },
+    {
+        "guid": "",
+        "datetime": "",
+        "name": "preamplifier",
+        "description": "Generic Preamplifier",
+        "mtype": null,
+        "resources": { "links": [""], "files": [""] },
+        "properties": {
+            "is_proprietary": {
+                "description": "Is the device proprietary? This typically means that a lot of the metadata properties may be unavailable.",
+                "levels": null,
+                "units": "bool"
+                },
+            "input_channel_count": {
+                "description": "Number of input channels",
+                "levels": null,
+                "units": null
+                },
+            "input_impedance": {
+                "description": "Value of the input impedance. TODO: The units may also be specified with qualifiers like Kilo, Mega etc.",
+                "levels": null,
+                "units": "Ohms"
+                },
+            "input_noise": {
+                "description": "Input noise of the preamp.",
+                "levels": null,
+                "units": "decibels"
+                },
+            "input_range": {
+                "description": "Range of input voltage.",
+                "levels": null,
+                "units": "milliVolts"
+                },
+            "input_gain": {
+                "description": "Input gain of the preamp.",
+                "levels": null,
+                "units": null
+                },
+            "input_bias": {
+                "description": "Input bias current",
+                "levels": null,
+                "units": "Amperes"
+                },
+            "common_mode_rejection_rate": {
+                "description": "Common Mode Rejection Rate of the preamp",
+                "levels": null,
+                "units": null
+                },
+            "isolation_mode_rejection_rate": {
+                "description": "Isolation Mode Rejection Rate of the preamp",
+                "levels": null,
+                "units": null
+                },
+            "is_isolated": {
+                "description": "Is the amplifier isolated?",
+                "levels": null,
+                "units": "bool"
+                },
+            "manufacturer": {
+                "description": "Name of the manufacturer.",
+                "levels": null,
+                "units": null
+                },
+            "manufacturer_model_name": {
+                "description": "Model name as provided by the manufacturer.",
+                "levels": null,
+                "units": null
+                },
+            "device_serial_number": {
+                "description": "Serial number of the device as provided by the manufacturer.",
+                "levels": null,
+                "units": null
+                }
+        },
+        "custom": {}
+    },
+    {
+        "guid": "",
+        "datetime": "",
         "name": "desktop_computer",
         "description": "Generic PC",
         "mtype": null,
@@ -21,7 +213,7 @@
                 "description": "Detailed description of the operating system used. TODO.",
                 "levels": null,
                 "units": null
-                },    
+                },        
             "cpu": {
                 "description": "Central Processing Unit",
                 "levels": null,
@@ -72,11 +264,6 @@
                 "levels": null,
                 "units": null
                 },
-            "peripherals_monitor": {
-                "description": "Name and type of the monitor screen used.",
-                "levels": null,
-                "units": null
-                },
             "peripherals_keyboard": {
                 "description": "Name and type of the keyboard TODO, changed from \"peripherals\": {keyboard: , video: , mouse:} ",
                 "levels": null,
@@ -92,6 +279,11 @@
                 "levels": null,
                 "units": null
                 },
+            "peripherals_monitor": {
+                "description": "Name and type of the monitor screen used.",
+                "levels": null,
+                "units": null
+                },    
             "softwares": {
                 "description": "List of softwares used. Each entry of the list a collection of key=value pairs with name, version and URL of the respective softwares. e.g. [{ \"sw_name\": \"description\", \"sw_version\": \"\", \"sw_url\": \"\" }]",
                 "levels": null,
@@ -99,5 +291,441 @@
                 }
             },
         "custom": {}
+    },
+    {
+        "guid": "",
+        "datetime": "",
+        "name": "biosensor",
+        "description": "Generic biosensor TODO maybe confused with biosensors used in biology labs different definitions exist.",
+        "mtype": null,
+        "resources": {},
+        "properties": {
+            "number_sensors": {
+                "description": "Number of sensors / channels present.",
+                "levels": null,
+                "units": null
+                },
+            "sensor_type": {
+                "description": "Type of the sensor. TODO how do we distinguish between sensor_type from biosensor to others?",
+                "levels": null,
+                "units": null
+                },
+            "n_analog_input_channels": {
+                "description": "Number of analog input channels. This may be different from total count due to presence of reference channels etc.",
+                "levels": null,
+                "units": null
+                },
+            "resolution": {
+                "description": "Resolution of the sensor",
+                "levels": null,
+                "units": null
+                },
+            "input_voltage_range": {
+                "description": "Input voltage range",
+                "levels": null,
+                "units": null
+                },
+            "input_gain_range": {
+                "description": "Input gain range",
+                "levels": null,
+                "units": null
+                },
+            "power_supply_description": {
+                "description": "Description of the power supply unit used.",
+                "levels": null,
+                "units": null
+                }
+        },
+        "custom": {}
+    },
+    {
+        "guid": "",
+        "name": "intercranial_sensor",
+        "description": "Generic intercranial sensor",
+        "mtype": null,
+        "resources": {},
+        "properties": {
+            "sensor_type": {
+                "description": "Type of intracranial sensor",
+                "levels": ["subdural", "interoperative", "epidural", "subgaleal", "inserting"],
+                "units": null
+                },
+            "number_sensors": {
+                "description": "Number of sensors / channels present.",
+                "levels": null,
+                "units": null
+                },
+            "configuration_type": {
+                "description": "",
+                "levels": ["strip", "grid", "stereo", "neuropixel"],
+                "units": null
+                },
+            "configuration": {
+                "description": "Configuration of IEEG sensors",
+                "levels": null,
+                "units": null
+                },
+            "sensor_material": {
+                "description": "Material of the sensor",
+                "levels": null,
+                "units": null
+                },
+            "sensor_spacing": {
+                "description": "Sensor spacing",
+                "levels": null,
+                "units": null
+                },
+            "sensor_size": {
+                "description": "Size of the sensors",
+                "levels": null,
+                "units": null
+                },
+            "input_impedance": {
+                "description": "The input impedance of the sensor",
+                "levels": null,
+                "units": null
+                },
+            "number_of_channels_per_tail": {
+                "description": "Number of IEEG sensors / channels per tail",
+                "levels": null,
+                "units": null
+                },
+            "number_of_tails": {
+                "description": "Number of IEEG sensors tails",
+                "levels": null,
+                "units": null
+                },
+            "manufacturer": {
+                "description": "Manufacturer name",
+                "levels": ["various brands #TODO", "self"],
+                "units": null
+                },
+            "model_number": {
+                "description": "Model number as provided by the manufacturer.",
+                "levels": null,
+                "units": null
+                },
+            "certification": {
+                "description": "Certification for use provided by the manufacturer.",
+                "levels": null,
+                "units": null
+                },
+            "ground": {
+                "description": "Sensor / channel connected to ground.",
+                "levels": null,
+                "units": null
+                },
+            "reference": {
+                "description": "Sensor / channel connected to reference.",
+                "levels": null,
+                "units": null
+                }
+        },
+        "custom": {}
+    },
+    {
+        "guid": "",
+        "name": "meg_sensor",
+        "description": "Generic MEG sensor",
+        "mtype": null,
+        "resources": {},
+        "properties": {
+            "sensor_type": {
+                "description": "Type of MEG sensor",
+                "levels": ["dc_squid_magnetometer", "dc_squid_planar_gradiometer", "opm", "other"],
+                "units": null
+                },
+            "number_sensors": {
+                "description": "Number of sensors / channels present.",
+                "levels": null,
+                "units": null
+                },
+            "sensor_size": {
+                "description": "Size of the sensors",
+                "levels": null,
+                "units": null
+                },
+            "average_triple_sensor_unit_spacing": {
+                "description": "Average triple sensor unit spacing",
+                "levels": null,
+                "units": null
+                },
+            "effective_channel_separation": {
+                "description": "Effective channel separation",
+                "levels": null,
+                "units": null
+                },
+            "sensor_layout": {
+                "description": "MEG Sensor layout",
+                "levels": null,
+                "units": null
+            },
+            "sensor_coverage": {
+                "description": "MEG Sensor coverage",
+                "levels": ["whole-head", "other"],
+                "units": null
+                },
+            "dynamic_range": {
+                "description": "Dynamic range of the sensors",
+                "levels": null,
+                "units": null
+                },
+            "residual_crosstalk": {
+                "description": "Residual crosstalk as provided by the manufacturer.",
+                "levels": null,
+                "units": null
+                },
+            "white_noise": {
+                "description": "White noise levels as provided by the manufacturer.",
+                "levels": null,
+                "units": null
+                },
+            "noise_levels_description": {
+                "description": "Guaranteed magnetometer noise levels (percentage of sensors) as described by the manufacturer.",
+                "levels": null,
+                "units": null
+                },
+            "noise_levels": {
+                "description": "List of guaranteed noise levels for sensors as provided by the manufacturer.",
+                "levels": null,
+                "units": null
+                },
+            "field_components": {
+                "description": "Field components.",
+                "levels": null,
+                "units": null
+                },
+            "manufacturer": {
+                "description": "Manufacturer name",
+                "levels": ["Elekta/Neuromag", "4D/BTi", "Other"],
+                "units": null
+                },
+            "model_number": {
+                "description": "Model number as provided by the manufacturer.",
+                "levels": null,
+                "units": null
+                },
+            "certification": {
+                "description": "Certification for use provided by the manufacturer.",
+                "levels": null,
+                "units": null
+                }
+            },
+        "custom": {}
+    },
+    {
+        "guid": "",
+        "name": "generic_trigger_box",
+        "description": "Generic Elekta Trigger Box",
+        "mtype": "actuator",
+        "resources": {},
+        "properties": {
+            "number_of_digital_io": {
+                "description": "Number of digital inputs / outputs. Total number include both channels that can be used as input and output.",
+                "levels": null,
+                "units": null
+                },
+            "number_analog_input_channel": {
+                "description": "Number of analog input channels",
+                "levels": null,
+                "units": null
+                },
+            "number_analog_output_channel": {
+                "description": "Number of analog output channels",
+                "levels": null,
+                "units": null
+                },
+            "is_optically_isolated": {
+                "description": "is the device optically isolated?",
+                "levels": null,
+                "units": "bool"
+                },
+            "sampling_frequency": {
+                "description": "Sampling frequency of the device",
+                "levels": null,
+                "units": "Hertz"
+                },
+            "resolution": {
+                "description": "Resolution of the trigger signals",
+                "levels": null,
+                "units": "Bits"
+                },
+            "noise": {
+                "description": "Noise levels as provided by the manufacturer.",
+                "levels": null,
+                "units": null
+                },
+            "accuracy": {
+                "description": "Accuracy of the trigger signals as provided by the manufacturer.",
+                "levels": null,
+                "units": null
+                },
+            "input_voltage_range": {
+                "description": "Input voltage range",
+                "levels": null,
+                "units": "Volts"
+                },
+            "input_current_range": {
+                "description": "Input current range.",
+                "levels": null,
+                "units": "Amperes"
+                },
+            "output_voltage_range": {
+                "description": "Output voltage range.",
+                "levels": null,
+                "units": "Volts"
+                },
+            "output_current_range": {
+                "description": "Output current range.",
+                "levels": null,
+                "units": "Amperes"
+                },
+            "operating_temperature": {
+                "description": "Operating temperature of the device as provided by the manufacturer.",
+                "levels": null,
+                "units": null
+                },
+            "power_supply_description": {
+                "description": "Description of the power supply unit used.",
+                "levels": null,
+                "units": null
+                }
+        },
+        "custom": {
+            "input_power": {
+                "description": "Input power",
+                "levels": null,
+                "units": null
+                },
+            "input_pulse": {
+                "description": "Input pulse",
+                "levels": null,
+                "units": null
+                },
+            "input_pulse_trigger_edge": {
+                "description": "Input pulse trigger edge",
+                "levels": ["rising", "falling"],
+                "units": null
+                },
+            "input_voltage": {
+                "description": "input voltage",
+                "levels": null,
+                "units": "Volts"
+                },
+            "input_impedance": {
+                "description": "Input impedance",
+                "levels": null,
+                "units": "Amperes"
+                },
+            "input_loop_current": {
+                "description": "Input loop current",
+                "levels": null,
+                "units": "Amperes"
+                },
+            "input_delay": {
+                "description": "Input delay",
+                "levels": null,
+                "units": "seconds"
+                },
+            "input_minimum_pulse_length": {
+                "description": "Input minimum pulse length",
+                "levels": null,
+                "units": "seconds"
+                },
+            "output_pulse": {
+                "description": "Output pulse",
+                "levels": null,
+                "units": null
+                },
+            "output_pulse_trigger_edge": {
+                "description": "Output pulse trigger edge",
+                "levels": ["rising", "falling"],
+                "units": null
+                },
+            "output_pulse_width": {
+                "description": "Output pulse width",
+                "levels": null,
+                "units": null
+                },
+            "pulse_rate": {
+                "description": "Pulse rate",
+                "levels": null,
+                "units": null
+                },
+            "maximum_output_current": {
+                "description": "Maximum output current",
+                "levels": null,
+                "units": "Amperes"
+                },
+            "output_delay": {
+                "description": "Output delay",
+                "levels": null,
+                "units": "seconds"
+                },
+            "ouput_minimum_pulse_length": {
+                "description": "Output minimum pulse length",
+                "levels": null,
+                "units": null
+                }
+        }
+    },
+    {
+        "guid": "",
+        "name": "eeg_assembly",
+        "description": "The generic EEG Setup as a group type. Minimal collection of devices in order to collect EEG data.",
+        "mtype": "group_type",
+        "resources": {
+            "components": ["eeg_sensor", "amplifier", "ADC", "Acquisition PC"]
+        },
+        "properties": {},
+        "custom": {}
+    },
+    {
+        "guid": "",
+        "name": "meg_assembly",
+        "description": "The generic MEG Setup as a group type. Minimal collection of devices in order to collect EEG data.",
+        "mtype": "group_type",
+        "resources": {
+            "components": ["meg_sensor", "preamplifier", "amplifier", 
+                        "ADC", "Acquisition PC"]
+        },
+        "properties": {},
+        "custom": {}
+    },
+    {
+        "guid": "",
+        "name": "ieeg_assembly",
+        "description": "The generic IEEG Setup as a group type. Minimal collection of devices in order to collect IEEG data.",
+        "mtype": "group_type",
+        "resources": {
+            "components": ["ieeg_sensor", "amplifier", "ADC", "Acquisition PC"]
+        },
+        "properties": {},
+        "custom": {}
+    },
+    {
+        "guid": "",
+        "name": "biosensor_assembly",
+        "description": "The generic biosensor setup as a group type. Minimal collection of devices in order to measure biosignals. This may include EMG, ECG, EOG and so on.",
+        "mtype": "group_type",
+        "resources": {
+            "components": ["biosensor", "amplifier", "ADC", "Acquisition PC"]
+        },
+        "properties": {},
+        "custom": {}
+    },
+    {
+        "guid": "",
+        "name": "eye_tracker_assembly",
+        "description": "Generic eye tracker group type",
+        "mtype": "group_type",
+        "resources": {
+            "components": ["Camera Sensor",
+                           "Camera Lens",
+                           "Illuminator",
+                           "Eye tracker mount",
+                           "Acquistion PC"]
+        },
+        "properties": {}
     }
 ]

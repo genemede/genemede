@@ -1,0 +1,92 @@
+{
+    "epilepsy_seizure_classification": {
+        "description": "",
+        "levels": ["#TODO"],
+        "units": null
+    },
+    "epilepsy_seizure_semiology": {
+        "description": "",
+        "levels": ["#TODO"],
+        "units": null
+    },
+    "epilepsy_seizure_frequency": {
+        "description": "",
+        "levels": ["#TODO"],
+        "units": null
+    },
+    "epilepsy_post_ictal_semiology": {
+        "description": "",
+        "levels": ["#TODO"],
+        "units": null
+    },
+    "epilepsy_age_seizure_onset": {
+        "description": "",
+        "levels": ["#TODO"],
+        "units": null
+    },
+    "epilepsy_seizure_onset_zone": {
+        "description": "",
+        "levels": ["#TODO"],
+        "units": null
+    },
+    "epilepsy_resection": {
+        "description": "",
+        "levels": ["#TODO"],
+        "units": null
+    },
+    "epilepsy_neuropsych_score": {
+        "description": "",
+        "levels": ["#TODO"],
+        "units": null
+    },
+    "epilepsy_wada_right_injection_language": {
+        "description": "WADA Scores after right ICA injection looking at language.",
+        "levels": null,
+        "units": "WADA Score"
+    },
+    "epilepsy_wada_left_injection_language": {
+        "description": "WADA Scores after left ICA injection looking at language.",
+        "levels": null,
+        "units": "WADA Score"
+    },
+    "epilepsy_wada_right_injection_memory": {
+        "description": "WADA Scores after right ICA injection looking at memory.",
+        "levels": null,
+        "units": "WADA Score"
+    },
+    "epilepsy_wada_left_injection_memory": {
+        "description": "WADA Scores after left ICA injection looking at memory.",
+        "levels": null,
+        "units": "WADA Score"
+    },
+    "epilepsy_past_surgical_history": {
+        "description": "",
+        "levels": ["#TODO"],
+        "units": null
+    },
+    "epilepsy_past_medical_history": {
+        "description": "",
+        "levels": ["#TODO"],
+        "units": null
+    },
+    "epilepsy_family_history": {
+        "description": "",
+        "levels": ["#TODO"],
+        "units": null
+    },
+    "epilepsy_mri_findings": {
+        "description": "",
+        "levels": ["#TODO"],
+        "units": null
+    },
+    "epilepsy_eeg_findings": {
+        "description": "",
+        "levels": ["#TODO"],
+        "units": null
+    },
+    "epilepsy_pathology_findings": {
+        "description": "",
+        "levels": ["#TODO"],
+        "units": null
+    }
+}

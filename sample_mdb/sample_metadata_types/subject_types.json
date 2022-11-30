@@ -4,7 +4,7 @@
     "datetime": "",
     "name": "cogitate_human_agent",
     "description": "",
-    "mtype": "generic_human_agent",
+    "mtype": "human_agent",
     "resources": {
         "property_types": ["epilepsy_specific_form.json", "sensory_specific_form.json", "mpi_specific_form.json"]
     },
@@ -88,7 +88,7 @@
         "datetime": "",
         "name": "generic_human_agent",
         "description": "",
-        "mtype": "",
+        "mtype": "human_agent",
         "resources": [""],
         "properties": {
             "creator": {

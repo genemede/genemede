@@ -1,0 +1,37 @@
+{
+    "responsible_member": {
+        "description": "Name of the person responsible for the ethical approval.",
+        "levels": null,
+        "units": null
+        },
+    "responsible_institute": {
+        "description": "Name of the institute granting the ethical approval.",
+        "levels": null,
+        "units": null
+        },
+    "protocol_number": {
+        "description": "Protocol number of the ethics approval.",
+        "levels": null,
+        "units": null
+        },
+    "approving_committee": {
+        "description": "Members of the ethical approval committee.",
+        "levels": null,
+        "units": null
+        },
+    "start_date": {
+        "description": "Start date of the ethical approval.",
+        "levels": null,
+        "units": "datetime"
+        },
+    "end_date": {
+        "description": "End date of the ethical approval.",
+        "levels": null,
+        "units": "datetime"
+        },
+    "required_certifications": {
+        "description": "List of certifications required as part of the ethical approval. e.g. training in handling animals etc.",
+        "levels": null,
+        "units": null
+        }
+}

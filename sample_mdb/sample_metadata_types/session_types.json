@@ -1,0 +1,20 @@
+[
+    {
+        "guid": "",
+        "datetime": "",
+        "name": "",
+        "description": "Instance of a specific session containing links to project, study, lab etc. involved.",
+        "mtype": "session",
+        "resources": {
+            "project": "*guid.projects.json",
+            "subjects": ["*guid.subjects.json"],
+            "researchers": ["*guid.researchers.json"],
+            "lab": "*guid.labs.json",
+            "study": "*guid.studies.json",
+            "procedure": ["*guid.procedures.json"]
+        },
+        "properties": {},
+        "custom": {},
+        "bids": {}
+    }
+] 
