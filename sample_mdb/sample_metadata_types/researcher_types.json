@@ -44,7 +44,7 @@
                 "units": null
             },
             "contact_phone": {
-                "description": "Contact phone number.",
+                "description": "Contact phone number. ",
                 "levels": null,
                 "units": null
                 },
@@ -109,7 +109,7 @@
                 "units": "Source of list of languages."
             },
             "additional_comments": {
-                "description": "Additional comments if any.",
+                "description": "",
                 "levels": null,
                 "units": null
             }        

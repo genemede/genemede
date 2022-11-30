@@ -1,0 +1,42 @@
+{
+    "project_website": {
+        "description": "URL to the project website.",
+        "levels": null,
+        "units": null
+        },
+    "preregistration": {
+        "description": "Link to the preregistration document.",
+        "levels": null,
+        "units": null
+        },
+    "communication": {
+        "description": "Various measn used to communicate within the project.",
+        "levels": ["posters", "talks"],
+        "units": null
+        },
+    "publications": {
+        "description": "List of DOIs of publications arising from the project.",
+        "levels": null,
+        "units": null
+        },
+    "code_repository": {
+        "description": "URL to the code repository / organization repository.",
+        "levels": null,
+        "units": null
+        },
+    "data_repository": {
+        "description": "URL to the data repository.",
+        "levels": null,
+        "units": null
+        },
+    "outreach": {
+        "description": "Resources for various outreach initiatives e.g. twitter, blogs etc.",
+        "levels": null,
+        "units": null
+        },
+    "digital_resources": {
+        "description": "List of digital resources used within the project. e.g. wiki, logo etc.",
+        "levels": null,
+        "units": null
+        }
+}

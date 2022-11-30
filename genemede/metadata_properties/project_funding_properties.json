@@ -1,0 +1,52 @@
+{
+"funding_agency": {
+    "description": "Name of the funding agency.",
+    "levels": null,
+    "units": null
+    },
+"grant_ID": {
+    "description": "Grant ID",
+    "levels": null,
+    "units": null
+    },
+"grant_application": {
+    "description": "Grant application document.",
+    "levels": null,
+    "units": null
+    },
+"grantee": {
+    "description": "Name of the person receiving the funding.",
+    "levels": null,
+    "units": null
+    },
+"legal_signatory": {
+    "description": "Name of the legal signatory for the funding.",
+    "levels": null,
+    "units": null
+    },
+"funding_start_date": {
+    "description": "Start date of the grant.",
+    "levels": null,
+    "units": "datetime"
+    },
+"funding_end_date": {
+    "description": "End date of the grant",
+    "levels": null,
+    "units": "datetime"
+    },
+"funding_amount": {
+    "description": "Amount of funding money",
+    "levels": null,
+    "units": null
+    },
+"funding_currency": {
+    "description": "Currency in which the funding amount is released.",
+    "levels": null,
+    "units": null
+    },
+"grant_website": {
+    "description": "Website of the grant.",
+    "levels": null,
+    "units": null
+    }
+}

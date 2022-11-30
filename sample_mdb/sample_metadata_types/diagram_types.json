@@ -1,0 +1,69 @@
+[
+    {
+        "guid": "",
+        "datetime": "",
+        "name": "",
+        "description": "Category describing the wiring diagram of the setup.",
+        "mtype": "setup",
+        "resources": {},
+        "properties": {
+            "name": {
+                "description": "Name of the schema used to describe the wiring diagram.",
+                "levels": null,
+                "units": null
+                },
+            "schema_version": {
+                "description": "Schema version",
+                "levels": null,
+                "units": null
+                },
+            "parser_version": {
+                "description": "Parser version",
+                "levels": null,
+                "units": null
+                },
+            "node_database": {
+                "description": "Link to database with nodes. e.g. devices.json",
+                "levels": null,
+                "units": null
+                },
+            "edge_database": {
+                "description": "Link to database with edges e.g. connectors.json",
+                "levels": null,
+                "units": null
+                },
+            "node_database_version": {
+                "description": "Version of the database with list of nodes.",
+                "levels": null,
+                "units": null
+                },
+            "edge_database_version": {
+                "description": "Version of the database with list of edges.",
+                "levels": null,
+                "units": null
+                },
+            "nodes": {
+                    "description": "List of dictionaries describing name and type of nodes. e.g. [{\"name\": \"MSR\", \"mtype\": \"object\"}]",
+                    "levels": null,
+                    "units": null
+                    },
+            "edges": {
+                "description": "List of dictionaries describing name and type of nodes. e.g. [{\"from\": \"Screen\", \"to\": \"human_agent\", \"mtype\": \"Attachment\"}]",
+                "levels": null,
+                "units": null
+                },
+            "software": {
+                "description": "List of softwares used.",
+                "levels": null,
+                "units": null
+                },
+            "code": {
+                "description": "Link to code used to prepare and manage the diagrams.",
+                "levels": null,
+                "units": null
+                }
+        },
+        "custom": {},
+        "bids": {}
+    }
+]

@@ -1,0 +1,37 @@
+{
+    "race": {
+        "description": "The race of the subject.",
+        "levels": ["American Indian or Alaska Native",
+                    "Asian",
+                    "Black or African American",
+                    "Hispanic or Latino",
+                    "Native Hawaiian or other Pacific Islander",
+                    "White"],
+        "units": "NIH based list. #TODO"
+    },
+    "health_history_of_medical_conditions": {
+        "description": "Known history of medical conditions.",
+        "levels": null,
+        "units": null
+    },
+    "psychiatric_history": {
+        "description": "Known history of psychiatric medical conditions.",
+        "levels": null,
+        "units": null
+    },
+    "substance_use": {
+        "description": "Known history of substance / drug use.",
+        "levels": null,
+        "units": null
+    },
+    "history_of_medication": {
+        "description": "Known history of medication.",
+        "levels": null,
+        "units": null
+    },
+    "musical_training": {
+        "description": "",
+        "levels": ["yes", "no"],
+        "units": null
+    }
+}
