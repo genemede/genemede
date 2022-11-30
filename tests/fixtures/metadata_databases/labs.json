@@ -1,0 +1,52 @@
+[
+    {
+        "guid": "1",
+        "name": "mylab1",
+        "mtype": "lab",
+        "datetime": "",
+        "description": "The name of the laboratory where the experiment is conducted.",
+        "resources": {
+        },
+        "properties": {
+            "official_name": "MYLAB",
+            "principal_investigator": ["Albert Einstein"],
+            "institute": "University of the World",
+            "department": "",
+            "location": "World",
+            "contact_phone": "",
+            "contact_email": "",
+            "contact_website": "",
+            "contact_address": ""
+        },
+        "custom": {},
+        "bids": {
+            "InstitutionName": "*properties.institute",
+            "InstitutionAddress": "*properties.contact_address"
+        }
+    },
+    {
+        "guid": "2",
+        "name": "mylab2",
+        "mtype": "lab",
+        "datetime": "",
+        "description": "The name of the laboratory where the experiment is conducted.",
+        "resources": {
+        },
+        "properties": {
+            "official_name": "MYLAB2",
+            "principal_investigator": ["Isaac Newton"],
+            "institute": "University of the Universe",
+            "department": "",
+            "location": "Universe",
+            "contact_phone": "",
+            "contact_email": "",
+            "contact_website": "",
+            "contact_address": ""
+        },
+        "custom": {},
+        "bids": {
+            "InstitutionName": "*properties.institute",
+            "InstitutionAddress": "*properties.contact_address"
+        }
+    }
+]

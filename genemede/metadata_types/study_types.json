@@ -1,0 +1,36 @@
+[
+    {
+        "guid": "",
+        "datetime": "",
+        "name": "",
+        "description": "Category describing a single study within a project.",
+        "mtype": "study",
+        "resources": {
+            "project": "*guid.projects.json"
+        },
+        "properties": {
+            "visit_number": {
+                "description": "Identifier given to denote an individual visit.",
+                "levels": null,
+                "units": null
+                },
+            "visit_progress": {
+                "description": "Identifier given to denote the progress of a visit, includes the visit number and the number of total visits planned.",
+                "levels": null,
+                "units": null
+                },
+            "study_procedures": {
+                "description": "A list of procedures performed during the visit. The individual procedures may be found in procedures.json.",
+                "levels": null,
+                "units": null
+                },
+            "protocol": {
+                "description": "TODO",
+                "levels": null,
+                "units": null
+            }
+        },
+        "custom": {},
+        "bids": {}
+    }
+]

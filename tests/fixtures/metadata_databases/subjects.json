@@ -1,0 +1,32 @@
+[
+    {
+        "guid": "",
+        "datetime": "",
+        "name": "Subject 1",
+        "description": "",
+        "mtype": "generic_human_agent",
+        "resources": [""],
+        "properties": {
+            "creator": "",
+            "person_responsible": "",
+            "sex": "male",
+            "age": "",
+            "education level": "",
+            "handedness": "",
+            "handedness_value": "",
+            "primary_language": "",
+            "secondary_language": "",
+            "visual_acuity": "",
+            "auditory_sensitivity": "",
+            "compensation": "",
+            "compensation_value": "",
+            "additional_comments": ""
+        },
+        "custom": {},
+        "bids": {
+            "age": "*properties.age",
+            "sex": "*properties.sex",
+            "handedness": "*properties.handedness"
+        }
+    }
+]

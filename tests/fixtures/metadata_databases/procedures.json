@@ -1,0 +1,29 @@
+[
+    {
+        "guid": "",
+        "name": "Procedure 1",
+        "mtype": "procedure",
+        "datetime": "",
+        "description": "Subject preparation procedure 1.",
+        "resources": {},
+        "properties": {
+            "procedure_type": "Subject Preparation"
+        },
+        "custom": {},
+        "bids": {}
+    },
+    {
+        "guid": "",
+        "name": "Procedure 2",
+        "mtype": "procedure",
+        "datetime": "",
+        "description": "Subject calibration procedure 2.",
+        "resources": {},
+        "properties": {
+            "procedure_type": "Subject Calibration"
+        },
+        "custom": {},
+        "bids": {}
+    }
+
+]
