@@ -6,13 +6,15 @@
 2. Create tests for this module
 """
 
+import os.path as op
 import unittest
-from jsondb import *
+from genemede.jsondb import *
 
 
 class TestJsonDatabase(unittest.TestCase):
     def setUp(self):
-        self.filename = "test.json"
+        json_fname = op.join(op.dirname(__file__), 'fixtures', 'test.json')
+        self.filename = json_fname
         self.data = {"test": "test"}
 
     def test_load_json(self):
