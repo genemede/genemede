@@ -1,0 +1,34 @@
+[
+    {
+        "guid": "",
+        "name": "",
+        "mtype": "analysis",
+        "datetime": "",
+        "description": "Category type for describing an analysis.",
+        "resources": {},
+        "properties": {
+            "analysis_steps": {
+                "description": "Analysis broken down into individual steps as defined by the researcher. List of analysis steps.",
+                "levels": null,
+                "units": null
+            },
+            "analysis_order": {
+                "description": "Order in which the above steps are performed. Analysis steps may be repeated here keeping the order intact.",
+                "levels": null,
+                "units": null
+            },
+            "analysis_code_repository": {
+                "description": "Path to the code repository containing the analysis scripts. List of strings.",
+                "levels": null,
+                "units": null
+            },
+            "similarto": {
+                "description": "If the analysis is similar to that described in other papers / repositories, the DOI of the relevant resource may be provided here.",
+                "levels": null,
+                "units": null
+            }
+        },
+        "custom": {},
+        "bids": {}
+    }
+]

@@ -3,7 +3,7 @@
         "guid": "",
         "datetime": "",
         "name": "",
-        "description": "Category describing a single study within a project.",
+        "description": "Category describing a single study within a project. A study is defined as list of procedures.",
         "mtype": "study",
         "resources": {
             "project": "*guid.projects.json"
@@ -23,12 +23,7 @@
                 "description": "A list of procedures performed during the visit. The individual procedures may be found in procedures.json.",
                 "levels": null,
                 "units": null
-                },
-            "protocol": {
-                "description": "TODO",
-                "levels": null,
-                "units": null
-            }
+                }
         },
         "custom": {},
         "bids": {}
