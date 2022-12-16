@@ -4,6 +4,7 @@ flake8
 ipython
 matplotlib
 ipykernel
-wheels
+wheel
 pip
 setuptools
+twine

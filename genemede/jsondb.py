@@ -3,17 +3,34 @@
 # @Author: Niccolo' Bonacchi (@nbonacchi)
 # @Date: Friday, July 15th 2022, 12:44:55 pm
 import json
+from pathlib import Path
 
 
-def load_json(filename):
-    with open(filename, "r") as f:
-        return json.load(f)
+def load_db(filename: str or Path) -> list:
+    fpath = Path(filename)
+    if fpath.exists():
+        with open(fpath, "r") as f:
+            return json.load(f)
+    else:
+        return
 
 
-def save_json(filename, data):
-    with open(filename, "w") as f:
-        json.dump(data, f)
+def save_db(filename, data) -> None:
+    fpath = Path(filename)
+    if fpath.exists():
+        print(f"{fpath} already exists, please use update_db()")
+    else:
+        with open(fpath, "w") as f:
+            json.dump(data, f)
+    return
 
+
+def read_db(filename):
+    """Describe DB with Name, num_entities, entity types?"""
+    # Open file
+    # count entries
+    # get mtype set
+    ...
 
 def get_data(filename):
     return load_json(filename)
@@ -195,6 +212,7 @@ Define the footprint of an entry into the database called entity containing: gui
 
 import json
 
+
 class Entity:
     def __init__(self, guid, name, description, mtype, resources, properties):
         self.guid = guid
@@ -232,3 +250,8 @@ class EntityManager:
 
     def to_json(self):
         return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
+
+
+
+if __name__ == "__main__":
+    fname = '/home/nico/Projects/COGITATE/GENEMEDE/genemede/scratch-test.json'
