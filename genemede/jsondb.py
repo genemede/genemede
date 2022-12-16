@@ -32,12 +32,13 @@ def read_db(filename):
     # get mtype set
     ...
 
+
 def get_data(filename):
     return load_json(filename)
 
 
 def save_data(filename, data):
-    save_json(filename, data)
+    save_db(filename, data)
 
 
 def add_data(filename, data):
@@ -64,6 +65,18 @@ def delete_data(filename, data):
 
 
 class Entity:
+    template = {
+        "guid": str,
+        "datetime": str,
+        "name": str,
+        "description": str,
+        "mtype": str,
+        "resources": list,
+        "properties": list,
+        "custom": list,
+        "bids": list,
+    }
+
     def __init__(self, guid, name, description, mtype, resources, properties):
         self.guid = guid
         self.name = name
@@ -252,6 +265,5 @@ class EntityManager:
         return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
 
 
-
 if __name__ == "__main__":
-    fname = '/home/nico/Projects/COGITATE/GENEMEDE/genemede/scratch-test.json'
+    fname = "/home/nico/Projects/COGITATE/GENEMEDE/genemede/scratch-test.json"
