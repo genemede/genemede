@@ -25,7 +25,7 @@ if CURRENT_PYTHON < REQUIRED_PYTHON:
 with open("README.md", "r") as f:
     long_description = f.read()
 
-with open("requirements-dev.txt") as f:
+with open("requirements.txt") as f:
     require = [x.strip() for x in f.readlines() if not x.startswith("git+")]
 
 

@@ -34,7 +34,7 @@ def read_db(filename):
 
 
 def get_data(filename):
-    return load_json(filename)
+    return load_db(filename)
 
 
 def save_data(filename, data):
@@ -77,13 +77,15 @@ class Entity:
         "bids": list,
     }
 
-    def __init__(self, guid, name, description, mtype, resources, properties):
-        self.guid = guid
-        self.name = name
-        self.description = description
-        self.mtype = mtype
-        self.resources = resources
-        self.properties = properties
+    def __init__(self, item=None):
+        if item is None:
+            for k in self.template:
+                self.__dict__k.update({k: None})
+        else:
+            self.from_dict(item)
+
+    def from_dict(self, item):
+        pass
 
 
 """
