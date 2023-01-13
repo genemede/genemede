@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b98d39977dce6b6f2f6bbb4c049ca106923f421cdd709a471e5f71a002195f75"
+            "sha256": "1e058e7e431975a1d908e85e5b09d1eacbfef15231ae5044a1965d566f6235c0"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -440,6 +440,10 @@
             ],
             "markers": "python_version >= '3.7'",
             "version": "==4.38.0"
+        },
+        "genemede": {
+            "editable": true,
+            "path": "."
         },
         "idna": {
             "hashes": [

@@ -60,7 +60,7 @@
                 "description": "Power rating of the device.",
                 "levels": null,
                 "units": "Watts"
-                },            
+                },
             "input_voltage": {
                 "description": "Input voltage",
                 "levels": null,
@@ -71,12 +71,12 @@
                 "levels": null,
                 "units": "Volts"
                 },
-            
+
             "input_current": {
                 "description": "Input current",
                 "levels": null,
                 "units": "Amperes"
-                },            
+                },
             "output_current": {
                 "description": "Output current",
                 "levels": null,
@@ -214,7 +214,7 @@
                 "levels": null,
                 "units": null
             },
-                },        
+                },
             "cpu": {
                 "description": "Central Processing Unit",
                 "levels": null,
@@ -270,7 +270,6 @@
                 "levels": null,
                 "units": null
             },
-                },
             "peripherals_keyboard": {
                 "description": "Name and type of the keyboard TODO, changed from \"peripherals\": {keyboard: , video: , mouse:} ",
                 "levels": null,
@@ -291,7 +290,7 @@
                 "description": "Name and type of the monitor screen used.",
                 "levels": null,
                 "units": null
-                },    
+                },
             "softwares": {
                 "description": "List of softwares used. Each entry of the list a collection of key=value pairs with name, version and URL of the respective softwares. e.g. [{ \"sw_name\": \"description\", \"sw_version\": \"\", \"sw_url\": \"\" }]",
                 "levels": null,
@@ -694,7 +693,7 @@
         "description": "The generic MEG Setup as a group type. Minimal collection of devices in order to collect EEG data.",
         "mtype": "group_type",
         "resources": {
-            "components": ["meg_sensor", "preamplifier", "amplifier", 
+            "components": ["meg_sensor", "preamplifier", "amplifier",
                         "ADC", "Acquisition PC"]
         },
         "properties": {},

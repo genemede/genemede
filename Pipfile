@@ -4,9 +4,9 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-genemede = {editable = true, path = "."}
 
 [dev-packages]
+genemede = {editable = true, path = "."}
 black = "*"
 pytest = "*"
 flake8 = "*"

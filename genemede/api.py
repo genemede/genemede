@@ -34,7 +34,9 @@ class Entity:
             raise TypeError(f"{item} <- not a dict")
         if any([k not in self.template for k in item.keys()]):
             raise KeyError(f"{item} <- does not match template")
-        return self.__init__(item=item)
+
+        for k, v in item.items():
+            self.__dict__.update({k: v})
 
 
 # class EntityDB:
@@ -151,6 +153,6 @@ class Entity:
 
 
 if __name__ == "__main__":
-    fname = "/home/nico/Projects/COGITATE/GENEMEDE/genemede/scratch-test.json"
+    fname = "../tests/fixtures/metadata_databases/"
     bla = Entity()
     print(0)
