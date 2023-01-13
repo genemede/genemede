@@ -6,6 +6,17 @@ name = "pypi"
 [packages]
 
 [dev-packages]
+genemede = {editable = true, path = "."}
+black = "*"
+pytest = "*"
+flake8 = "*"
+ipython = "*"
+matplotlib = "*"
+ipykernel = "*"
+wheel = "*"
+pip = "*"
+setuptools = "*"
+twine = "*"
 
 [requires]
-python_version = "3.9"
+python_version = "3.10"
