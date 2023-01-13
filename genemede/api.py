@@ -1,131 +1,156 @@
+#!/usr/bin/env python
+# @File: nico/jsondb.py
+# @Author: Niccolo' Bonacchi (@nbonacchi)
+# @Date: Friday, July 15th 2022, 12:44:55 pm
 import json
-
-class JSONValidator:
-    """allows a user to specify a template for a JSON file and then use that template to validate the structure of a JSON file"""
-    def __init__(self, template):
-        self.template = template
-
-    def validate(self, json_data):
-        # Validate the JSON data against the template
-        return json_data == self.template
-
-# Create a JSONValidator instance with a template
-validator = JSONValidator({
-    "name": str,
-    "age": int,
-    "email": str
-})
-
-# Validate some JSON data
-json_data = {
-    "name": "John Doe",
-    "age": 30,
-    "email": "john.doe@example.com"
-}
-
-if validator.validate(json_data):
-    print("JSON data is valid")
-else:
-    print("JSON data is invalid")
+from pathlib import Path
 
 
-
-
-
-
-class JsonAPI:
-    """
-    Write a python API to interface with different json files enforcing a template to be defined by the user. The API should have functions for reading, writing, updating, and searching entries by any of the template keys
-    Example usage:
+class Entity:
     template = {
-    'name': '',
-    'age': 0,
-    'city': ''
+        "guid": str,
+        "datetime": str,
+        "name": str,
+        "description": str,
+        "mtype": str,
+        "resources": list,
+        "properties": list,
+        "custom": list,
+        "bids": list,
     }
 
-    api = JsonAPI(template)
-    api.write_json('example.json', {'name': 'John', 'age': 30, 'city': 'New York'})
-    api.update_json('example.json', 'age', 31)
-    print(api.read_json('example.json'))
-    print(api.search_json('example.json', 'age'))
-    print(api.search_json('example.json', 'country'))"""
-    def __init__(self, template):
-        self.template = template
-    
-    def read_json(self, file_path):
-        with open(file_path, 'r') as json_file:
-            data = json.load(json_file)
-            return data
-
-    def write_json(self, file_path, data):
-        with open(file_path, 'w') as json_file:
-            json.dump(data, json_file, indent=4)
-
-    def update_json(self, file_path, key, value):
-        data = self.read_json(file_path)
-        data[key] = value
-        self.write_json(file_path, data)
-
-    def search_json(self, file_path, key):
-        data = self.read_json(file_path)
-        if key in data:
-            return data[key]
+    def __init__(self, item=None):
+        if item is None:
+            for k in self.template:
+                self.__dict__.update({k: None})
         else:
-            return None
+            self.from_dict(item)
 
-### Write a python API to interface with different json files. The json files act like databases of  entities defined by a template which is user defined
-import json
+    def __repr__(self):
+        print(self.__dict__)
 
-class JSONAPI:
-    def init(self, template):
-        self.template = template
-        self.entities = {}
+    def from_dict(self, item):
+        if not isinstance(item, dict):
+            raise TypeError(f"{item} <- not a dict")
+        if any([k not in self.template for k in item.keys()]):
+            raise KeyError(f"{item} <- does not match template")
+        return self.__init__(item=item)
 
-    def add_entity(self, entity):
-        if not all(key in entity for key in self.template):
-            raise ValueError("Entity does not match template")
 
-        self.entities[entity["id"]] = entity
+# class EntityDB:
+#     def __init__(self, filename):
+#         self.filename = filename
+#         self.entities = []
+#         self.load()
 
-    def get_entity(self, entity_id):
-        if entity_id not in self.entities:
-            raise ValueError("Entity not found")
-        return self.entities[entity_id]
+#     def load(self):
+#         data = get_data(self.filename)
+#         for item in data:
+#             entity = Entity(
+#                 item["guid"],
+#                 item["name"],
+#                 item["description"],
+#                 item["mtype"],
+#                 item["resources"],
+#                 item["properties"],
+#             )
+#             self.entities.append(entity)
 
-    def update_entity(self, entity_id, updates):
-        if entity_id not in self.entities:
-            raise ValueError("Entity not found")
-        self.entities[entity_id].update(updates)
+#     def save(self):
+#         data = []
+#         for entity in self.entities:
+#             item = {
+#                 "guid": entity.guid,
+#                 "name": entity.name,
+#                 "description": entity.description,
+#                 "mtype": entity.mtype,
+#                 "resources": entity.resources,
+#                 "properties": entity.properties,
+#             }
+#             data.append(item)
+#         save_data(self.filename, data)
 
-    def delete_entity(self, entity_id):
-        if entity_id not in self.entities:
-            raise ValueError("Entity not found")
-        del self.entities[entity_id]
+#     def add(self, entity):
+#         self.entities.append(entity)
+#         self.save()
 
-    def save(self, filepath):
-        with open(filepath, "w") as f:
-            json.dump(self.entities, f)
+#     def update(self, entity):
+#         for i, item in enumerate(self.entities):
+#             if item.guid == entity.guid:
+#                 self.entities[i] = entity
+#                 self.save()
+#                 break
 
-    def load(self, filepath):
-        with open(filepath, "r") as f:
-            self.entities = json.load(f)
+#     def delete(self, entity):
+#         for i, item in enumerate(self.entities):
+#             if item.guid == entity.guid:
+#                 del self.entities[i]
+#                 self.save()
+#                 break
 
-"""
-Example usage
-template = ["id", "name", "age", "gender"]
+#     def get(self, guid):
+#         for entity in self.entities:
+#             if entity.guid == guid:
+#                 return entity
+#         return None
 
-api = JSONAPI(template)
+#     def get_all(self):
+#         return self.entities
 
-api.add_entity({"id": 1, "name": "John", "age": 35, "gender": "male"})
-api.add_entity({"id": 2, "name": "Jane", "age": 30, "gender": "female"})
+#     def load_db(filename: str or Path) -> list:
+#         fpath = Path(filename)
+#         if fpath.exists():
+#             with open(fpath, "r") as f:
+#                 return json.load(f)
+#         else:
+#             return
 
-api.get_entity(1) # {"id": 1, "name": "John", "age": 35, "gender": "male"}
-api.update_entity(2, {"age": 31})
-api.get_entity(2) # {"id": 2, "name": "Jane", "age": 31, "gender": "female"}
-api.delete_entity(1)
-api.get_entity(1) # raises ValueError
+#     @staticmethod
+#     def save_db(filename, data) -> None:
+#         fpath = Path(filename)
+#         if fpath.exists():
+#             print(f"{fpath} already exists, please use update_db()")
+#         else:
+#             with open(fpath, "w") as f:
+#                 json.dump(data, f)
+#         return
 
-api.save("entities.json")
-api.load("entities.json")
-api.get_entity(2) # {"id": 2, "name": "Jane", "age": 31, "gender": "female"}
-"""
+#     @staticmethod
+#     def read_db(filename):
+#         """Describe DB with Name, num_entities, entity types?"""
+#         # Open file
+#         # count entries
+#         # get mtype set
+#         ...
+
+#     @staticmethod
+#     def get_data(filename):
+#         return load_db(filename)
+
+#     @staticmethod
+#     def save_data(filename, data):
+#         save_db(filename, data)
+
+#     @staticmethod
+#     def add_data(filename, data):
+#         data = get_data(filename)
+#         data.append(data)
+#         save_data(filename, data)
+
+#     @staticmethod
+#     def update_data(filename, data):
+#         data = get_data(filename)
+#         data.update(data)
+#         save_data(filename, data)
+
+#     @staticmethod
+#     def delete_data(filename, data):
+#         data = get_data(filename)
+#         data.remove(data)
+#         save_data(filename, data)
+
+
+if __name__ == "__main__":
+    fname = "/home/nico/Projects/COGITATE/GENEMEDE/genemede/scratch-test.json"
+    bla = Entity()
+    print(0)
