@@ -1,0 +1,43 @@
+[
+{
+    "guid": "",
+    "datetime": "",
+    "name": "delay",
+    "description": "An entity that describes a time interval in the context of an experimental task.",
+    "mtype": null,
+    "resources": [],
+    "properties": {
+        "unit": {
+            "description": "Units in standard international format to describe the time.",
+            "levels": null,
+            "units": null
+            },
+        "values": {
+            "description": "Duration value of the time passed during this delay. Can be int, float or` list of values",
+            "levels": null,
+            "units": null
+            },
+        "distribution": {
+            "description": "Name of the statistical distribution from which the values are drawn. If fixed_list then it is pregenerated",
+            "levels": null,
+            "units": null
+            },
+        "distribution_parameters": {
+            "description": "Parameters of the statistical distribution",
+            "levels": null,
+            "units": null
+            },
+        "seed": {
+            "description": "Seed value chosen to fix the random number generator.",
+            "levels": null,
+            "units": null
+            },
+        "n_draws": {
+            "description": "Number of draws / samples picked from the random distribution. This is typically same as number of trials / use as a proxy for pregenerated or not",
+            "levels": null,
+            "units": null
+            }
+    },
+    "custom": {}
+}
+]

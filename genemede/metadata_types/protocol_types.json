@@ -1,0 +1,30 @@
+[
+    {
+        "guid": "",
+        "name": "",
+        "mtype": "procedure",
+        "datetime": "",
+        "description": "Category type for describing a procedure.",
+        "resources": {},
+        "properties": {
+            "ordered": {
+                "description": "Are the list of steps described here ordered?",
+                "levels": [true, false],
+                "units": null
+            },
+            "data_produced": {
+                "description": "Does this protocol produce data?",
+                "levels": [true, false],
+                "units": null
+            },
+            "activity_steps": {
+                "description": "List of steps that are part of this protocol.",
+                "levels": null,
+                "units": null
+            }
+
+        },
+        "custom": {},
+        "bids": {}
+    }
+]

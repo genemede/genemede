@@ -9,7 +9,7 @@
         "project": "*guid.projects.json",
         "lab": "*guid.labs.json",
         "uri": [""],
-        "property_types": ["*ethics", "*funding", "project_outputs"]
+        "property_types": ["*project_ethics", "*project_funding", "*project_outputs"]
         },
     "properties": {
         "project_start_date": {
@@ -42,6 +42,11 @@
             "levels": null,
             "units": null
             },
+        "data_management_plan": {
+            "description": "Data management plan.",
+            "levels": null,
+            "units": null
+            },
         "project_digital_tools": {
             "description": "List of digital tools used in the project. e.g. slack, slab, keeper, trello",
             "levels": null,
@@ -51,7 +56,12 @@
             "description": "Documentation that describes the legacy of the project and the data. This may include documents describing policies on how how the project and all related output will be maintained.",
             "levels": null,
             "units": null
-            }
+            },
+        "project_consortium_agreement": {
+            "description": "A legal document that regulates procedures related to science, data and procedures of a scientific study. Contains the statement of work etc.",
+            "levels": null,
+            "units": null
+        }
         },
     "custom": {},
     "bids": {}
