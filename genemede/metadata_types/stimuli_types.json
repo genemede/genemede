@@ -1,0 +1,50 @@
+[
+    {
+        "guid": "",
+        "datetime": "",
+        "name": "stimuli",
+        "description": "Stimuli / feedback in the context of an experiment. Usually of the types Visual, Auditory, Olfactory, Gustatory, Somatosensory",
+        "mtype": null,
+        "resources": [],
+        "properties": {},
+        "custom": {},
+        "bids": {}
+    },
+    {
+        "guid": "",
+        "datetime": "",
+        "name": "visual_stimulus",
+        "description": "Visual stimulation",
+        "mtype": null,
+        "resources": [],
+        "properties": {
+            "device_list": {
+                "description": "list of device types that are required to run this stimuli / response / feedback / delays",
+                "levels": null,
+                "units": null
+                },
+            "stimuli_files": {
+                "description": "Link to Stim Folder with stim metadata.",
+                "levels": null,
+                "units": null
+                },
+            "bounding_box": {
+                "description": "Dimensions of the rectangular bounding box surface where the stimuli are presented. { width, height }",
+                "levels": null,
+                "units": null
+                },
+            "background": {
+                "description": "Background colour of the stimulus surface. Format [R, G, B, A]",
+                "levels": null,
+                "units": null
+                },
+            "provenance": {
+                "description": "Description of the source / method using which the stimuli were created / generated. e.g. Facegen Modeler for creating faces",
+                "levels": null,
+                "units": null
+                }
+        },
+        "custom": {},
+        "bids": {}
+    }
+]

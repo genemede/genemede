@@ -1,0 +1,33 @@
+[
+{
+    "guid": "",
+    "datetime": "",
+    "name": "response",
+    "description": "An entity that describes a time interval in the context of an experimental task.",
+    "mtype": null,
+    "resources": [],
+    "properties": {
+        "is_active": {
+            "description": "Active response is true if generates events that change task params, false if is just recording something, might be connected to a device",
+            "levels": null,
+            "units": null
+            },
+        "activity_threshold": {
+            "description": "Defines what is considered a response in the context of a given task",
+            "levels": null,
+            "units": null
+            },
+        "activity_units": {
+            "description": "Units of the activity values in Standard International format.",
+            "levels": null,
+            "units": null
+            },
+        "device_list": {
+            "description": "list of device types that are required to run this stimuli / response / feedback / delays",
+            "levels": null,
+            "units": null
+            }
+    },
+    "custom": {}
+}
+]
