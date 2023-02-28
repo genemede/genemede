@@ -1,0 +1,17 @@
+
+site_name: genemede
+site_url: https://genemede.github.io
+site_description: GENEMEDE Documentation
+site_author: GENEMEDE Authors
+
+repo_url: https://github.com/genemede/genemede.github.io
+edit_uri: blob/master/docs/
+
+nav:
+  - Home: index.md
+  - About: about.md  
+  - License: license.md
+  - Glossary: 
+      - GENEMEDE: genemede_glossary.html
+theme: 
+  name: material
