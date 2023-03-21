@@ -1,12 +1,13 @@
 #!/usr/bin/env python
-# @File: nico/jsondb.py
+# @File: nico/api.py
 # @Author: Niccolo' Bonacchi (@nbonacchi)
 # @Date: Friday, July 15th 2022, 12:44:55 pm
 import json
 import random
+import shutil
 import uuid
+from datetime import datetime
 from pathlib import Path
-from pprint import pprint
 
 
 class Entity:
@@ -62,7 +63,7 @@ class EntityFile(object):
     storing it in the database.
 
     Args:
-        object (_type_): _description_
+        path (str): Path to a json/gnmd file.
     """
 
     def __init__(self, path):
@@ -77,8 +78,26 @@ class EntityFile(object):
 
     @staticmethod
     def write(fpath, data):
+        fpath = Path(fpath)
+        if fpath.exists():
+            EntityFile.backup(fpath)
+
         with open(fpath, "w") as f:
             json.dump(data, f, indent=4)
+
+    @staticmethod
+    def backup(fpath):
+        """Backup fpath by copying it and appending _bak_datetime
+
+        Args:
+            fpath (str or Path): path to genemede file
+        """
+        fpath = Path(fpath)
+        fpath_bak = fpath.parent.joinpath(
+            fpath.stem + "_bak_" + datetime.now().strftime("%Y-%m-%dT%H_%M_%S.%f") + fpath.suffix
+        )
+        fpath_bak.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy(fpath, fpath_bak)
 
     @staticmethod
     def validate_file(fpath):  # XXX: fpath or data for staticmethod?
@@ -104,14 +123,18 @@ class EntityFile(object):
         assert all(
             [len(d) == len(random_item) for d in data]
         ), f"EntityFile.read({fpath}) <- not a list of dicts with same length"
-        # Check if keys are the same
+        # Check if item keys are all the same
         assert all(
             [all([k in d.keys() for k in random_item.keys()]) for d in data]
         ), f"EntityFile.read({fpath}) <- not a list of dicts with same keys"
-        # Check if keys are the same as the template
+        # Check if item keys are the same as the template
         assert all(
             [all([k in Entity.template.keys() for k in d]) for d in data]
         ), f"EntityFile.read({fpath}) <- not a list of dicts with same keys"
+        # Check if all template keys are in the item keys (use the random_item)
+        assert all(
+            [k in random_item.keys() for k in Entity.template.keys()]
+        ), f"EntityFile.read({fpath}) <- some Entity template keys seem to be missing"
 
         return True
 
@@ -120,18 +143,51 @@ class EntityFile(object):
         uuid.uuid4()"""
         has_something = all([bool(d.guid) for d in self.ents])
         if not has_something:
-            print(f"EntityFile.check_guids({self.path}) <- not all entities have guids")
+            print(f"EntityFile.check_guids({self.path.name}) <- not all entities have guids")
+            return False
         are_strings = all([isinstance(d.guid, str) for d in self.ents])
         if not are_strings:
-            print(f"EntityFile.check_guids({self.path}) <- not all entities have guids")
+            print(f"EntityFile.check_guids({self.path.name}) <- not all entities have guids")
+            return False
         try:
             for d in self.ents:
                 uuid.UUID(d.guid)
-        except ValueError as e:
+        except BaseException as e:
             print(e)
-            print(f"EntityFile.check_guids({self.path}) <- not all guids are uuid.UUID")
+            print(f"EntityFile.check_guids({self.path.name}) <- not all guids are uuid.UUID")
+            return False
 
         return True
+
+    def fix_guids(self, dry_run=True):
+        """Fixes the guids of all the entities in the EntityFile
+
+        Args:
+            dry_run (bool, optional): Do everything except changing the values. Defaults to True.
+        """
+        if dry_run:
+            for e in self.ents:
+                if not bool(e.guid):
+                    print(
+                        f"EntityFile.fix_guids({self.path.name}): Will create GUID for  {e.name} -> current: {e.guid}"
+                    )
+                elif not isinstance(e.guid, str):
+                    print(
+                        f"EntityFile.fix_guids({self.path.name}): Will create GUID for {e.name} -> current: {e.guid}"
+                    )
+        else:
+            for e in self.ents:
+                if not bool(e.guid):
+                    e.guid = str(uuid.uuid4())
+                    print(
+                        f"EntityFile.fix_guids({self.path.name}): Created GUID for {e.name} -> {e.guid}"
+                    )
+                elif not isinstance(e.guid, str):
+                    e.guid = str(uuid.uuid4())
+                    print(
+                        f"EntityFile.fix_guids({self.path.name}): Created GUID for {e.name} -> {e.guid}"
+                    )
+            EntityFile.write(self.path, self.ents)
 
     def load(self):
         data = EntityFile.read(self.path)
@@ -156,119 +212,6 @@ class EntityFile(object):
 
     def __str__(self):
         return str(self.path)
-
-
-# class EntityDB:
-#     def __init__(self, filename):
-#         self.filename = filename
-#         self.entities = []
-#         self.load()
-
-#     def load(self):
-#         data = get_data(self.filename)
-#         for item in data:
-#             entity = Entity(
-#                 item["guid"],
-#                 item["name"],
-#                 item["description"],
-#                 item["mtype"],
-#                 item["resources"],
-#                 item["properties"],
-#             )
-#             self.entities.append(entity)
-
-#     def save(self):
-#         data = []
-#         for entity in self.entities:
-#             item = {
-#                 "guid": entity.guid,
-#                 "name": entity.name,
-#                 "description": entity.description,
-#                 "mtype": entity.mtype,
-#                 "resources": entity.resources,
-#                 "properties": entity.properties,
-#             }
-#             data.append(item)
-#         save_data(self.filename, data)
-
-#     def add(self, entity):
-#         self.entities.append(entity)
-#         self.save()
-
-#     def update(self, entity):
-#         for i, item in enumerate(self.entities):
-#             if item.guid == entity.guid:
-#                 self.entities[i] = entity
-#                 self.save()
-#                 break
-
-#     def delete(self, entity):
-#         for i, item in enumerate(self.entities):
-#             if item.guid == entity.guid:
-#                 del self.entities[i]
-#                 self.save()
-#                 break
-
-#     def get(self, guid):
-#         for entity in self.entities:
-#             if entity.guid == guid:
-#                 return entity
-#         return None
-
-#     def get_all(self):
-#         return self.entities
-
-#     def load_db(filename: str or Path) -> list:
-#         fpath = Path(filename)
-#         if fpath.exists():
-#             with open(fpath, "r") as f:
-#                 return json.load(f)
-#         else:
-#             return
-
-#     @staticmethod
-#     def save_db(filename, data) -> None:
-#         fpath = Path(filename)
-#         if fpath.exists():
-#             print(f"{fpath} already exists, please use update_db()")
-#         else:
-#             with open(fpath, "w") as f:
-#                 json.dump(data, f)
-#         return
-
-#     @staticmethod
-#     def read_db(filename):
-#         """Describe DB with Name, num_entities, entity types?"""
-#         # Open file
-#         # count entries
-#         # get mtype set
-#         ...
-
-#     @staticmethod
-#     def get_data(filename):
-#         return load_db(filename)
-
-#     @staticmethod
-#     def save_data(filename, data):
-#         save_db(filename, data)
-
-#     @staticmethod
-#     def add_data(filename, data):
-#         data = get_data(filename)
-#         data.append(data)
-#         save_data(filename, data)
-
-#     @staticmethod
-#     def update_data(filename, data):
-#         data = get_data(filename)
-#         data.update(data)
-#         save_data(filename, data)
-
-#     @staticmethod
-#     def delete_data(filename, data):
-#         data = get_data(filename)
-#         data.remove(data)
-#         save_data(filename, data)
 
 
 if __name__ == "__main__":
