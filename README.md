@@ -1,5 +1,7 @@
-# GENEMEDE
 ### **Docs:** ![docs](https://github.com/genemede/genemede/actions/workflows/deploy_mkdocs.yml/badge.svg)
+---
+
+# GENEMEDE
 
 GENEMEDE (GEneric NEuro MEtadata DEscriptors) is a generic metadata framework that may be used to comprehensively describe a neuroscience experiment.
 
