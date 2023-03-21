@@ -1,0 +1,27 @@
+# This is a basic workflow to build docs using mkdocs and deploy to genemede.github.io
+
+name: deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    name: Deploy docs to GitHub Pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 
+        uses: actions/checkout@v2
+      - name: Build
+        uses: Tiryoh/actions-mkdocs@v0
+        with:
+          mkdocs_version: 'latest' # option
+          requirements: 'requirements-docs.txt' # option
+          configfile: 'mkdocs.yml' # option
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          external_repository: genemede/genemede.github.io
+          publish_dir: ./site
+          publish_branch: gh-pages
