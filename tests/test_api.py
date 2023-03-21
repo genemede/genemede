@@ -9,15 +9,15 @@ from genemede.api import Entity
 class TestEntity(unittest.TestCase):
     def test_init_with_no_arg(self):
         e = Entity()
-        self.assertIsNone(e.guid)
-        self.assertIsNone(e.datetime)
-        self.assertIsNone(e.name)
-        self.assertIsNone(e.description)
-        self.assertIsNone(e.mtype)
-        self.assertIsNone(e.resources)
-        self.assertIsNone(e.properties)
-        self.assertIsNone(e.custom)
-        self.assertIsNone(e.bids)
+        self.assertIsNone(e.guid)  # type: ignore
+        self.assertIsNone(e.datetime)  # type: ignore
+        self.assertIsNone(e.name)  # type: ignore
+        self.assertIsNone(e.description)  # type: ignore
+        self.assertIsNone(e.mtype)  # type: ignore
+        self.assertIsNone(e.resources)  # type: ignore
+        self.assertIsNone(e.properties)  # type: ignore
+        self.assertIsNone(e.custom)  # type: ignore
+        self.assertIsNone(e.bids)  # type: ignore
 
     def test_init_with_valid_dict(self):
         item = {
@@ -32,15 +32,15 @@ class TestEntity(unittest.TestCase):
             "bids": [],
         }
         e = Entity(item)
-        self.assertEqual(e.guid, "123")
-        self.assertEqual(e.datetime, "2022-01-01")
-        self.assertEqual(e.name, "test")
-        self.assertEqual(e.description, "test description")
-        self.assertEqual(e.mtype, "test type")
-        self.assertEqual(e.resources, [])
-        self.assertEqual(e.properties, [])
-        self.assertEqual(e.custom, [])
-        self.assertEqual(e.bids, [])
+        self.assertEqual(e.guid, "123")  # type: ignore
+        self.assertEqual(e.datetime, "2022-01-01")  # type: ignore
+        self.assertEqual(e.name, "test")  # type: ignore
+        self.assertEqual(e.description, "test description")  # type: ignore
+        self.assertEqual(e.mtype, "test type")  # type: ignore
+        self.assertEqual(e.resources, [])  # type: ignore
+        self.assertEqual(e.properties, [])  # type: ignore
+        self.assertEqual(e.custom, [])  # type: ignore
+        self.assertEqual(e.bids, [])  # type: ignore
 
     def test_init_with_invalid_dict(self):
         item = {"invalid_key": "invalid_value"}
