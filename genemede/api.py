@@ -10,7 +10,7 @@ from datetime import datetime
 from pathlib import Path
 
 
-class Entity:
+class Entity(dict):
     template = {
         "guid": str,
         "datetime": str,
@@ -36,6 +36,10 @@ class Entity:
     def __str__(self):
         return str(self.__dict__)
 
+    # TODO: implement __eq__ comparison between all keys of dict
+    def __eq__(self, other):
+        return self.__dict__ == other.__dict__
+
     def from_dict(self, item):
         """
         Check if item is a dict, if any key in the item is not in the template
@@ -56,6 +60,7 @@ class Entity:
         return {k: v for k, v in self.__dict__.items() if v is not None}
 
 
+# ADD Create Read Update and Delete methods
 class EntityFile(object):
     """EntityFile is a class that stores a list of GNMD entities and allows to
     add, update, and delete entities.
@@ -69,7 +74,10 @@ class EntityFile(object):
     def __init__(self, path):
         self.path = Path(path)
         self.ents = []
-        self.load()  # Remove for lazy object creation
+        if self.validate_file(self.path):  # TODO change to is_valid_file
+            self.load()  # Remove for lazy object creation
+        else:
+            print(f"{self.path} is not a valid genemede file")
 
     @staticmethod
     def read(fpath):
@@ -83,7 +91,7 @@ class EntityFile(object):
             EntityFile.backup(fpath)
 
         with open(fpath, "w") as f:
-            json.dump(data, f, indent=4)
+            json.dump([d for d in data], f, indent=4)
 
     @staticmethod
     def backup(fpath):
@@ -218,7 +226,11 @@ if __name__ == "__main__":
     root_path = Path("../tests/fixtures/metadata_databases/")
     fpath = root_path.joinpath("labs.json")
     bla = Entity()
+    bla = [Entity() for _ in range(10)]
+    EntityFile.write("./DELETEME.json", bla)
+    fpath.exists()
     blaf = EntityFile(fpath)
+    EntityFile.write("./DELETEME.json", blaf.ents)
     print(bla)
     print(blaf)
     print(0)

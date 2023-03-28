@@ -2,6 +2,7 @@
 # @File: tests/test_api.py
 # @Author: Niccolo' Bonacchi (@nbonacchi)
 # @Date: Friday, January 13th 2023, 6:17:44 pm
+import copy
 import os
 import tempfile
 import json
@@ -117,7 +118,7 @@ class TestEntityFile(unittest.TestCase):
         valid_path.unlink()
 
     def test_load(self):
-        with self.assertRaises(KeyError):
+        with self.assertRaises(AssertionError):
             EntityFile(self.test_path)
         # Create a valid file to test and test it
         valid_path = Path(self.test_path).with_name("valid_test.json")
@@ -143,11 +144,16 @@ class TestEntityFile(unittest.TestCase):
         entities[0].guid = 1234
         self.assertFalse(entity_file.check_guids())
 
-    # def test_fix_guids(self):
-    #     Test with dry_run=True
-    #     entities = [Entity(item=d) for d in self.valid_data]
-    #     entity_file = EntityFile(self.valid_path)
-    #     entity_file.ents = entities
+    def test_fix_guids(self):
+        # Test with dry_run=True
+        entities = [Entity(item=d) for d in self.valid_data]
+        entity_file = EntityFile(self.valid_path)
+        entity_file.ents = copy.deepcopy(entities)
+        entity_file.fix_guids(dry_run=True)
+        self.assertTrue(entity_file.ents == entities)
+        # Test with dry_run=False
+        entity_file.fix_guids(dry_run=False)
+        self.assertFalse(entity_file.ents == entities)
 
 
 if __name__ == "__main__":
