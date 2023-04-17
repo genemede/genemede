@@ -29,6 +29,11 @@ class Entity(dict):
                 self.__dict__.update({k: None})
         else:
             self.from_dict(item)
+        # Add automatic GUID generation and datetime timestamp
+        if self.guid is None:
+            self.guid = str(uuid.uuid4())
+        if self.datetime is None:
+            self.datetime = datetime.now().isoformat()
 
     def __repr__(self):
         return str(self.__dict__)
@@ -55,8 +60,11 @@ class Entity(dict):
         for k, v in item.items():
             self.__dict__.update({k: v})
 
-    def to_dict(self):
-        return {k: v for k, v in self.__dict__.items() if v is not None}
+    def to_dict(self, squeeze=True):
+        if squeeze:
+            return {k: v for k, v in self.__dict__.items() if v is not None}
+        else:
+            return {k: v for k, v in self.__dict__.items()}
 
 
 # ADD Create Read Update and Delete methods
@@ -174,26 +182,24 @@ class EntityFile(object):
         """
         if dry_run:
             for e in self.ents:
-                if not bool(e.guid):
-                    print(
-                        f"EntityFile.fix_guids({self.path.name}): Will create GUID for  {e.name} -> current: {e.guid}"
-                    )
-                elif not isinstance(e.guid, str):
+                # Check if guid is valid
+                try:
+                    uuid.UUID(e.guid)
+                except BaseException as x:
                     print(
                         f"EntityFile.fix_guids({self.path.name}): Will create GUID for {e.name} -> current: {e.guid}"
                     )
         else:
             for e in self.ents:
-                if not bool(e.guid):
+                # Fix invalid guids
+                try:
+                    uuid.UUID(e.guid)
+                except BaseException as x:
                     e.guid = str(uuid.uuid4())
                     print(
                         f"EntityFile.fix_guids({self.path.name}): Created GUID for {e.name} -> {e.guid}"
                     )
-                elif not isinstance(e.guid, str):
-                    e.guid = str(uuid.uuid4())
-                    print(
-                        f"EntityFile.fix_guids({self.path.name}): Created GUID for {e.name} -> {e.guid}"
-                    )
+
             EntityFile.write(self.path, self.ents)
 
     def load(self):
@@ -204,7 +210,7 @@ class EntityFile(object):
     def save(self):
         EntityFile.write(self.path, self.ents)
 
-    def update(self, data):
+    def update(self, data):  # Use EntityFile.write
         with open(self.path, "w") as f:
             json.dump(data, f, indent=4)
 
@@ -225,11 +231,14 @@ if __name__ == "__main__":
     root_path = Path("../tests/fixtures/metadata_databases/")
     fpath = root_path.joinpath("labs.json")
     bla = Entity()
-    bla = [Entity() for _ in range(10)]
-    EntityFile.write("./DELETEME.json", bla)
-    fpath.exists()
-    blaf = EntityFile(fpath)
-    EntityFile.write("./DELETEME.json", blaf.ents)
+    dbla = bla.to_dict()
     print(bla)
-    print(blaf)
+    print(dbla)
+    # bla = [Entity() for _ in range(10)]
+    # EntityFile.write("./DELETEME.json", bla)
+    # fpath.exists()
+    # blaf = EntityFile(fpath)
+    # EntityFile.write("./DELETEME.json", blaf.ents)
+    # print(bla)
+    # print(blaf)
     print(0)

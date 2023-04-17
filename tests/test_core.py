@@ -10,15 +10,15 @@ import shutil
 import unittest
 import uuid
 from datetime import datetime
-from genemede.api import EntityFile, Entity
+from genemede.core import EntityFile, Entity
 from pathlib import Path
 
 
 class TestEntity(unittest.TestCase):
     def test_init_with_no_arg(self):
         e = Entity()
-        self.assertIsNone(e.guid)  # type: ignore
-        self.assertIsNone(e.datetime)  # type: ignore
+        self.assertIsNotNone(e.guid)  # type: ignore
+        self.assertIsNotNone(e.datetime)  # type: ignore
         self.assertIsNone(e.name)  # type: ignore
         self.assertIsNone(e.description)  # type: ignore
         self.assertIsNone(e.mtype)  # type: ignore
@@ -147,6 +147,7 @@ class TestEntityFile(unittest.TestCase):
     def test_fix_guids(self):
         # Test with dry_run=True
         entities = [Entity(item=d) for d in self.valid_data]
+        entities[0].guid = "asdasd"
         entity_file = EntityFile(self.valid_path)
         entity_file.ents = copy.deepcopy(entities)
         entity_file.fix_guids(dry_run=True)
