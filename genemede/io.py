@@ -22,13 +22,18 @@ def create(fpath: t.Union[str, Path], data: t.Union[list[dict], list[Entity]]) -
         data (t.Union[list[t.dict], list[Entity]]): list of dicts or list of Entity objects
     """
     fpath = Path(fpath)
+    # If fpath is folder,ask for name
+    if fpath.is_dir():
+        print("Warning: fpath is folder -> creating a new file with same name")
+        fpath.joinpath(fpath.name + ".gnmd").mkdir(parents=True, exist_ok=True)
+
     # If fpath extension is not 'gnmd', change it to gnmd
     if fpath.suffix != ".gnmd":
         fpath = fpath.with_suffix(".gnmd")
 
     if fpath.exists():
-        backup(fpath)
-        fpath.unlink()
+        raise FileExistsError(f"{fpath} already exists")
+        return
 
     with open(fpath, "w") as f:
         json.dump(data, f, indent=4)
@@ -42,15 +47,16 @@ def read(fpath: t.Union[str, Path]) -> None:
 def update(fpath: t.Union[str, Path], data):
     """Backup exisiting file, delete it and create a new one with same name and the new data."""
     fpath = Path(fpath)
+    if not fpath.exists():
+        raise FileNotFoundError(f"{fpath} does not exist")
+        return
+
     backup(fpath)
+
     # If fpath extension is not 'gnmd', change it to gnmd
     if fpath.suffix != ".gnmd":
         print("Warning: fpath extension is not '.gnmd' -> changing extension to '.gnmd'")
         fpath = fpath.with_suffix(".gnmd")
-
-    if fpath.exists():
-        backup(fpath)
-        fpath.unlink()
 
     with open(fpath, "w") as f:
         json.dump(data, f, indent=4)

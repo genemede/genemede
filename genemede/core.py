@@ -86,27 +86,6 @@ class EntityFile(object):
         else:
             print(f"{self.path} is not a valid genemede file")
 
-    def check_guids(self) -> bool:
-        """Checks if all the entities have guids and if they are valid
-        uuid.uuid4()"""
-        has_something = all([bool(d.guid) for d in self.ents])
-        if not has_something:
-            print(f"EntityFile.check_guids({self.path.name}) <- not all entities have guids")
-            return False
-        are_strings = all([isinstance(d.guid, str) for d in self.ents])
-        if not are_strings:
-            print(f"EntityFile.check_guids({self.path.name}) <- not all entities have guids")
-            return False
-        try:
-            for d in self.ents:
-                uuid.UUID(d.guid)
-        except BaseException as e:
-            print(e)
-            print(f"EntityFile.check_guids({self.path.name}) <- not all guids are uuid.UUID")
-            return False
-
-        return True
-
     def fix_guids(self, dry_run=True):
         """Fixes the guids of all the entities in the EntityFile
 
@@ -133,7 +112,7 @@ class EntityFile(object):
                         f"EntityFile.fix_guids({self.path.name}): Created GUID for {e.name} -> {e.guid}"
                     )
 
-            EntityFile.write(self.path, self.ents)
+            io.write(self.path, self.ents)
 
     def fix_datetimes(self, dry_run=True):
         """Fixes the datetimes of all the entities in the EntityFile"""
