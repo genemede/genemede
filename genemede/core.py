@@ -3,9 +3,9 @@
 # @Author: Niccolo' Bonacchi (@nbonacchi)
 # @Date: Friday, July 15th 2022, 12:44:55 pm
 import json
-import random
 import shutil
 import uuid
+import genemede.io as io
 from datetime import datetime
 from pathlib import Path
 
@@ -81,77 +81,10 @@ class EntityFile(object):
     def __init__(self, path):
         self.path = Path(path)
         self.ents = []
-        if self.validate_file(self.path):  # TODO change to is_valid_file
+        if io.is_valid_file(self.path):  # TODO change to is_valid_file
             self.load()  # Remove for lazy object creation
         else:
             print(f"{self.path} is not a valid genemede file")
-
-    @staticmethod
-    def read(fpath):
-        with open(fpath, "r") as f:
-            return json.load(f)
-
-    @staticmethod
-    def write(fpath, data):
-        fpath = Path(fpath)
-        if fpath.exists():
-            EntityFile.backup(fpath)
-
-        with open(fpath, "w") as f:
-            json.dump([d for d in data], f, indent=4)
-
-    @staticmethod
-    def backup(fpath):
-        """Backup fpath by copying it and appending _bak_datetime
-
-        Args:
-            fpath (str or Path): path to genemede file
-        """
-        fpath = Path(fpath)
-        fpath_bak = fpath.parent.joinpath(
-            fpath.stem + "_bak_" + datetime.now().strftime("%Y-%m-%dT%H_%M_%S.%f") + fpath.suffix
-        )
-        fpath_bak.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy(fpath, fpath_bak)
-
-    @staticmethod
-    def validate_file(fpath):  # XXX: fpath or data for staticmethod?
-        """Checks if the json file is a valied gnmd file i.e.:
-        - it's a list of dicts
-        - dicts all have the same keys
-        - all the keys match
-        - all keys match the Entity template
-        If ifle is validadated it can be safely opened as an EntityFile to Entity objects
-
-        TODO: add capacity to check first dict being different from others
-        """
-        # Read the file
-        data = EntityFile.read(fpath)
-        # Check that it is a list of dicts
-        assert isinstance(data, list), f"EntityFile.read({fpath}) <- not a list"
-        assert all(
-            [isinstance(d, dict) for d in data]
-        ), f"EntityFile.read({fpath}) <- not a list of dicts"
-        # select a random item to match to all the others
-        random_item = random.choice(data)
-        # Check if same number of keys (Entity level)
-        assert all(
-            [len(d) == len(random_item) for d in data]
-        ), f"EntityFile.read({fpath}) <- not a list of dicts with same length"
-        # Check if item keys are all the same
-        assert all(
-            [all([k in d.keys() for k in random_item.keys()]) for d in data]
-        ), f"EntityFile.read({fpath}) <- not a list of dicts with same keys"
-        # Check if item keys are the same as the template
-        assert all(
-            [all([k in Entity.template.keys() for k in d]) for d in data]
-        ), f"EntityFile.read({fpath}) <- not a list of dicts with same keys"
-        # Check if all template keys are in the item keys (use the random_item)
-        assert all(
-            [k in random_item.keys() for k in Entity.template.keys()]
-        ), f"EntityFile.read({fpath}) <- some Entity template keys seem to be missing"
-
-        return True
 
     def check_guids(self) -> bool:
         """Checks if all the entities have guids and if they are valid
@@ -202,6 +135,29 @@ class EntityFile(object):
 
             EntityFile.write(self.path, self.ents)
 
+    def fix_datetimes(self, dry_run=True):
+        """Fixes the datetimes of all the entities in the EntityFile"""
+        if dry_run:
+            for e in self.ents:
+                # Check if datetime is valid
+                try:
+                    datetime.strptime(e.datetime, "%Y-%m-%dT%H:%M:%S.%f")
+                except BaseException as x:
+                    print(
+                        f"EntityFile.fix_datetimes({self.path.name}): Will create datetime for {e.name} -> current: {e.datetime}"
+                    )
+        else:
+            for e in self.ents:
+                # Fix invalid datetimes
+                try:
+                    datetime.strptime(e.datetime, "%Y-%m-%dT%H:%M:%S.%f")
+                except BaseException as x:
+                    e.datetime = datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")
+                    print(
+                        f"EntityFile.fix_datetimes({self.path.name}): Created datetime for {e.name} -> {e.datetime}"
+                    )
+            EntityFile.write(self.path, self.ents)
+
     def load(self):
         data = EntityFile.read(self.path)
         for d in data:
@@ -228,17 +184,9 @@ class EntityFile(object):
 
 
 if __name__ == "__main__":
-    root_path = Path("../tests/fixtures/metadata_databases/")
-    fpath = root_path.joinpath("labs.json")
-    bla = Entity()
-    dbla = bla.to_dict()
-    print(bla)
-    print(dbla)
-    # bla = [Entity() for _ in range(10)]
-    # EntityFile.write("./DELETEME.json", bla)
-    # fpath.exists()
-    # blaf = EntityFile(fpath)
-    # EntityFile.write("./DELETEME.json", blaf.ents)
-    # print(bla)
-    # print(blaf)
+    import genemede as gm
+
+    fpath = gm.test_path.joinpath("fixtures/metadata_descriptors/labs/labs.json")
+    labs = EntityFile(fpath)
+    labs.fix_guids(False)
     print(0)
