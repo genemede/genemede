@@ -94,10 +94,12 @@ class TestEntityFile(unittest.TestCase):
         self.assertTrue(is_valid_file(self.valid_path))
 
     def test_load(self):
-        # Create a valid file to test and test it
+        # Instanciate a valid file
         ef = EntityFile(self.valid_path)
-        ef.ents
-        self.assertTrue(EntityFile(self.valid_path))
+        self.assertTrue(len(ef.ents) == 2)
+        # Instanciate an invalid file
+        ief = EntityFile(self.test_path)
+        self.assertFalse(len(ief.ents) == 2)
 
     def test_fix_guids(self):
         # Test with dry_run=True
