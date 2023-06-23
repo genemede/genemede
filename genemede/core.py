@@ -4,7 +4,6 @@
 # @Date: Friday, July 15th 2022, 12:44:55 pm
 import json
 import random
-import shutil
 import typing as t
 import uuid
 from datetime import datetime
@@ -46,7 +45,7 @@ class Entity(dict):
         if not self.guid:
             self.guid = str(uuid.uuid4())
         if not self.datetime:
-            self.datetime = datetime.now().isoformat()
+            self.datetime = datetime.now().isoformat()  # type: ignore
 
     def __repr__(self):
         return str(self.__dict__)
@@ -104,62 +103,12 @@ class EntityFile(object):
         self.path = Path(path)
         self.ents = []
         if not self.path.exists():
+            print(f"Warning: {self.path} does not exist")
             return
         elif not is_valid_file(self.path):
             print(f"Error: {self.path} is not a valid genemede file")
         elif not lazy:
             self.load()
-
-    def fix_guids(self, dry_run=True):
-        """Fixes the guids of all the entities in the EntityFile
-
-        Args:
-            dry_run (bool, optional): Do everything except changing the values. Defaults to True.
-        """
-        if dry_run:
-            for e in self.ents:
-                # Check if guid is valid
-                try:
-                    uuid.UUID(e.guid)
-                except BaseException as x:
-                    print(
-                        f"EntityFile.fix_guids({self.path.name}): Will create GUID for {e.name} -> current: {e.guid}"
-                    )
-        else:
-            for e in self.ents:
-                # Fix invalid guids
-                try:
-                    uuid.UUID(e.guid)
-                except BaseException as x:
-                    e.guid = str(uuid.uuid4())
-                    print(
-                        f"EntityFile.fix_guids({self.path.name}): Created GUID for {e.name} -> {e.guid}"
-                    )
-
-            io.create(self.path, self.ents)
-
-    def fix_datetimes(self, dry_run=True):
-        """Fixes the datetimes of all the entities in the EntityFile"""
-        if dry_run:
-            for e in self.ents:
-                # Check if datetime is valid
-                try:
-                    datetime.strptime(e.datetime, "%Y-%m-%dT%H:%M:%S.%f")
-                except BaseException as x:
-                    print(
-                        f"EntityFile.fix_datetimes({self.path.name}): Will create datetime for {e.name} -> current: {e.datetime}"
-                    )
-        else:
-            for e in self.ents:
-                # Fix invalid datetimes
-                try:
-                    datetime.strptime(e.datetime, "%Y-%m-%dT%H:%M:%S.%f")
-                except BaseException as x:
-                    e.datetime = datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")
-                    print(
-                        f"EntityFile.fix_datetimes({self.path.name}): Created datetime for {e.name} -> {e.datetime}"
-                    )
-            io.update(self.path, self.ents)
 
     def load(self):
         data = io.read(self.path)
@@ -246,13 +195,26 @@ def is_valid_file(fpath):
     TODO: add capacity to check first dict being different from others
     """
     data = io.read(fpath)
-    return is_valid_gnmd_struct(data)
+    if is_valid_gnmd_struct(data):
+        return True
+    else:
+        print(f"Error: {fpath} is not a valid gnmd file")
+        return False
 
 
-if __name__ == "__main__":
-    import genemede as gm
+def find_gnmd_files(path: t.Union[str, Path]) -> t.List[t.Union[str, Path]]:
+    """
+    Return a list of all .json files in the given path that are valid genemede files.
 
-    fpath = gm.test_path.joinpath("fixtures/metadata_descriptors/labs/labs.json")
-    labs = EntityFile(fpath)
-    labs.fix_guids(False)
-    print(0)
+    Args:
+        path (Union[str, Path]): The path to search for .gnmd files.
+
+    Returns:
+        A list of all .gnmd files in the given path.
+    """
+    path = Path(path)
+    files = []
+    for f in path.glob("*.json"):
+        if is_valid_file(f):
+            files.append(f)
+    return files

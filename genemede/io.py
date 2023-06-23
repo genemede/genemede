@@ -29,7 +29,7 @@ def create(fpath: t.Union[str, Path], data: list[dict]) -> None:
         None
     """
     fpath = Path(fpath)
-    # If fpath is folder,ask for name
+    # If fpath is folder, ask for name
     if fpath.is_dir():
         print(f"Warning: {fpath} is folder -> creating a new file with same name")
         fpath.joinpath(fpath.name + ".gnmd").mkdir(parents=True, exist_ok=True)
@@ -105,7 +105,7 @@ def update(fpath: t.Union[str, Path], data):
     if not fpath.exists():
         raise FileNotFoundError(f"{fpath} does not exist")
         return
-    backup(fpath)
+    delete(fpath)
     create(fpath, data)
 
 

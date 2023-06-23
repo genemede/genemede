@@ -6,4 +6,4 @@ __version__ = "0.0.1"
 from pathlib import Path
 
 test_path = Path(__file__).parent.parent.joinpath("tests")
-from genemede.core import EntityFile, Entity
+from genemede.core import *
