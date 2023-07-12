@@ -1,0 +1,26 @@
+[
+    {
+        "guid": "",
+        "datetime": "",
+        "name": "subject",
+        "description": "",
+        "mtype": "mtype",
+        "parent": null,
+        "components": [],
+        "resources": {},
+        "properties": {
+            "creator": {
+                "description": "Person who collected the participant information.",
+                "levels": ["name one of experimenters.json"],
+                "units": null
+            },
+            "person_responsible": {
+                "description": "Person who is responsible for the participant information.",
+                "levels": ["name one of experimenters.json"],
+                "units": null
+            }
+        },
+        "custom": {},
+        "tags": {}
+    }
+]

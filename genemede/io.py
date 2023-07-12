@@ -87,7 +87,7 @@ def backup(fpath: t.Union[str, Path]) -> None:
     shutil.copy(fpath, fpath_bak)
 
 
-def update(fpath: t.Union[str, Path], data):
+def update(fpath: t.Union[Path, str], data):
     """
     Update the file at the given path with the given data, creating a backup
     first.

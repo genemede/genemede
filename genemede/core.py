@@ -15,14 +15,15 @@ import genemede.io as io
 class Entity(dict):
     template = {
         "guid": str,
-        "datetime": str,
+        "modified_at": str,  # change to altered_at
         "name": str,
         "description": str,
         "mtype": str,
+        "components": list,
         "resources": list,
         "properties": list,
         "custom": list,
-        "bids": list,
+        "tags": list,
     }
 
     def __init__(self, item=None):
@@ -214,7 +215,7 @@ def find_gnmd_files(path: t.Union[str, Path]) -> t.List[t.Union[str, Path]]:
     """
     path = Path(path)
     files = []
-    for f in path.glob("*.json"):
+    for f in path.rglob("*.json"):  # XXX: .gnmd.json IMPLEMENT!!
         if is_valid_file(f):
             files.append(f)
     return files

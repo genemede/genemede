@@ -65,20 +65,39 @@ def try_fix_file(fpath: str | Path) -> None:
     """
     Tries to fix common issues with a file.
     """
-    data = io.read(fpath)
-    fixed_data = fix_entity_missing_keys(data)
-    fixed_data = fix_guids(fixed_data)
-    fixed_data = fix_datetimes(fixed_data)
-    io.update(fpath, fixed_data)
+    try:
+        data = io.read(fpath)
+        fixed_data = data[:]
+    except BaseException as e:
+        print("-->", fpath, "-->", e)
+    try:
+        fixed_data = fix_entity_missing_keys(data)
+    except BaseException as e:
+        print("-->", fpath, "-->", e)
+    try:
+        fixed_data = fix_guids(fixed_data)
+    except BaseException as e:
+        print("-->", fpath, "-->", e)
+    try:
+        fixed_data = fix_datetimes(fixed_data)
+    except BaseException as e:
+        print("-->", fpath, "-->", e)
+    try:
+        io.update(fpath, fixed_data)
+    except BaseException as e:
+        print("-->", fpath, "-->", e)
 
 
 if __name__ == "__main__":
     fpath = "/home/nico/Projects/COGITATE/GENEMEDE/genemede/tests/fixtures/metadata_databases/devices.json"
-    fpath = "/home/nico/Projects/COGITATE/GENEMEDE/genemede/tests/fixtures/metadata_databases/"
+    fpath = "/home/nico/Projects/COGITATE/GENEMEDE/genemede/tests/fixtures/metadata_descriptors/"
     files = gnmd.find_gnmd_files(fpath)
     print(files)
     for f in files:
-        try_fix_file(f)
+        try:
+            try_fix_file(f)
+        except BaseException as e:
+            print("-->", f, "-->", e)
 
     # gnmd.is_valid_file(fpath)
     # data = io.read(fpath)

@@ -1,0 +1,76 @@
+[
+    {
+        "guid": "",
+        "modified_at": "",
+        "name": "human",
+        "description": "",
+        "mtype": "mtype",
+        "parent": "subject",
+        "components": [],
+        "resources": [],
+        "properties": {
+            "sex": {
+                "description": "Sex of the subject",
+                "levels": ["female", "male", "other", "prefer not to answer"],
+                "units": null
+            },
+            "age": {
+                "description": "Age of the subject",
+                "levels": [],
+                "units": "years"
+            },
+            "education_level": {
+                "description": "",
+                "levels": ["None", "primary", "secondary", "undergraduate", "graduate"],
+                "units": null
+            },
+            "handedness": {
+                "description": "Handedness as self rated by participant",
+                "levels": ["right", "left", "ambidextrous"],
+                "units": ""
+            },
+            "handedness_value": {
+                "description": "Handedness based on Edinburgh handedness inventory",
+                "levels": [],
+                "units": "Edinburgh handedness inventory (Value from 1-10)"
+            },
+            "primary_language": {
+                "description": "Primary language of the subject",
+                "level": [],
+                "units": "Source of list #TODO"
+            },
+            "secondary_language": {
+                "description": "Secondary language of the subject",
+                "level": [],
+                "units": "Source of list #TODO"
+            },
+            "visual_acuity": {
+                "description": "Visual acuity",
+                "level": ["normal", "abnormal"],
+                "units": null
+            },
+            "auditory_sensitivity": {
+                "description": "Auditory sensitivity based on an audiogram as self-reported by the participant.",
+                "levels": null,
+                "units": null
+            },
+            "compensation": {
+                "description": "Money paid to the participant for participating in the study.",
+                "level": ["payment", "credit", "not compensated"],
+                "units": null
+            },
+            "compensation_value": {
+                "description": "Money paid to the participant for participating in the study.",
+                "level": null,
+                "units": ["EUR", "USD", "University Credits"]
+            },
+            "additional_comments": {
+                "description": "",
+                "levels": ["#TODO"],
+                "units": null
+            }
+        },
+        "custom": {},
+        "bids": {}
+    }
+]

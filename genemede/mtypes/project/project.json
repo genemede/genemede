@@ -1,0 +1,65 @@
+[
+    {
+        "guid": "",
+        "modified_at": "",
+        "name": "project",
+        "description": "",
+        "mtype": "mtype",
+        "components": [],
+        "links": [],
+        "properties": {
+            "labs": {
+                "description": "List of labs associated with the project.",
+                "levels": "labs.gnmd",
+                "units": null
+            },
+            "subjects": {
+                "description": "List of subjects associated with the project.",
+                "levels": "subjects.gnmd",
+                "units": null
+            },
+            "project_start_date": {
+                "description": "Start date of the project.",
+                "levels": null,
+                "units": "datetime"
+            },
+            "project_end_date": {
+                "description": "End date of the project",
+                "levels": null,
+                "units": "datetime"
+            },
+            "project_lead": {
+                "description": "Name of the project leader / person responsible for the project.",
+                "levels": null,
+                "units": null
+            },
+            "members": {
+                "description": "Members of the project",
+                "levels": "researchers.gnmd.json",
+                "units": null
+            },
+            "project_manager": {
+                "description": "Name of the project manager.",
+                "levels": null,
+                "units": null
+            },
+            "data_manager": {
+                "description": "Name of the data manager.",
+                "levels": null,
+                "units": null
+            },
+            "project_digital_tools": {
+                "description": "List of digital tools used in the project. e.g. slack, slab, keeper, trello",
+                "levels": null,
+                "units": null
+            },
+            "project_legacy_management": {
+                "description": "Documentation that describes the legacy of the project and the data. This may include documents describing policies on how how the project and all related output will be maintained.",
+                "levels": null,
+                "units": null
+            }
+        },
+        "custom": {},
+        "tags": {}
+    }
+]

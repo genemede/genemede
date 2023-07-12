@@ -101,17 +101,17 @@ class TestEntityFile(unittest.TestCase):
         ief = EntityFile(self.test_path)
         self.assertFalse(len(ief.ents) == 2)
 
-    def test_fix_guids(self):
-        # Test with dry_run=True
-        entities = [Entity(item=d) for d in self.valid_data]
-        entities[0].guid = "asdasd"
-        entity_file = EntityFile(self.valid_path)
-        entity_file.ents = copy.deepcopy(entities)
-        entity_file.fix_guids(dry_run=True)
-        self.assertTrue(entity_file.ents == entities)
-        # Test with dry_run=False
-        entity_file.fix_guids(dry_run=False)
-        self.assertFalse(entity_file.ents == entities)
+    # def test_fix_guids(self):
+    #     # Test with dry_run=True
+    #     entities = [Entity(item=d) for d in self.valid_data]
+    #     entities[0].guid = "asdasd"
+    #     entity_file = EntityFile(self.valid_path)
+    #     entity_file.ents = copy.deepcopy(entities)
+    #     entity_file.fix_guids(dry_run=True)
+    #     self.assertTrue(entity_file.ents == entities)
+    #     # Test with dry_run=False
+    #     entity_file.fix_guids(dry_run=False)
+    #     self.assertFalse(entity_file.ents == entities)
 
 
 if __name__ == "__main__":

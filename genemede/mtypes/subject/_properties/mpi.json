@@ -1,12 +1,14 @@
 {
     "race": {
         "description": "The race of the subject.",
-        "levels": ["American Indian or Alaska Native",
-                    "Asian",
-                    "Black or African American",
-                    "Hispanic or Latino",
-                    "Native Hawaiian or other Pacific Islander",
-                    "White"],
+        "levels": [
+            "American Indian or Alaska Native",
+            "Asian",
+            "Black or African American",
+            "Hispanic or Latino",
+            "Native Hawaiian or other Pacific Islander",
+            "White"
+        ],
         "units": "NIH based list. #TODO"
     },
     "health_history_of_medical_conditions": {
