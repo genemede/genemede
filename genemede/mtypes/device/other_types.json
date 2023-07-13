@@ -2,16 +2,6 @@
     {
         "guid": "",
         "datetime": "",
-        "name": "group",
-        "description": "The type group is a collection of entities that represent an abstract class e.g. eye tracker camera, mount, and PC may comprise of an eye tracker group.",
-        "mtype": null,
-        "resources": [],
-        "properties": {},
-        "custom": {}
-    },
-    {
-        "guid": "",
-        "datetime": "",
         "name": "sensor",
         "description": "A sensor type is used to indicate any entity that senses / measures data.",
         "mtype": null,
@@ -71,7 +61,6 @@
                 "levels": null,
                 "units": "Volts"
             },
-
             "input_current": {
                 "description": "Input current",
                 "levels": null,

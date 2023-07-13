@@ -1,0 +1,15 @@
+[
+    {
+        "guid": "",
+        "datetime": "",
+        "name": "cogitate",
+        "description": "",
+        "mtype": "mtype",
+        "parent": "human",
+        "components": ["epilepsy", "visual", "mpi"],
+        "resources": [],
+        "properties": {},
+        "custom": {},
+        "tags": {}
+    }
+]

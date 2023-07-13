@@ -1,0 +1,25 @@
+[
+    {
+        "guid": "",
+        "modified_at": "",
+        "name": "device",
+        "description": "A device type is used to indicate any entity that is used to perform a specific function.",
+        "mtype": "mtype",
+        "parent": null,
+        "links": {},
+        "properties": {
+            "lab": null,
+            "custody": null,
+            "location": null,
+            "inputs": [],
+            "outputs": [],
+            "serial_number": null,
+            "manufacturer": null,
+            "model": null,
+            "power_requirement": null,
+            "function": null
+        },
+        "custom": {},
+        "tags": []
+    }
+]

@@ -15,12 +15,13 @@ import genemede.io as io
 class Entity(dict):
     template = {
         "guid": str,
-        "modified_at": str,  # change to altered_at
+        "modified_at": str,
         "name": str,
         "description": str,
         "mtype": str,
+        "parent": str,
         "components": list,
-        "resources": list,
+        "links": list,
         "properties": list,
         "custom": list,
         "tags": list,
