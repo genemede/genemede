@@ -1,0 +1,15 @@
+[
+    {
+        "guid": "",
+        "modified_at": "",
+        "name": "cogitate",
+        "description": "",
+        "mtype": "mtype",
+        "parent": "project",
+        "components": ["ethics", "funding", "outputs"],
+        "links": [],
+        "properties": {},
+        "custom": {},
+        "tags": {}
+    }
+]

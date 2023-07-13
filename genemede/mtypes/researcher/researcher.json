@@ -1,8 +1,8 @@
 [
     {
         "guid": "",
-        "name": "generic_experimenter",
-        "mtype": "researcher",
+        "name": "researcher",
+        "mtype": "mtype",
         "datetime": "",
         "resources": {
             "project": "*guid.projects.json",
@@ -10,69 +10,103 @@
             "uri": [""]
         },
         "properties": {
+            "lab_affiliation": {
+                "description": "Affiliation of the researcher.",
+                "levels": "labs.gnmd",
+                "units": null
+            },
+            "lab_starting_date": {
+                "description": "Date the researcher joined the lab.",
+                "levels": null,
+                "units": null
+            },
+            "subject_fields": {
+                "description": "Subject fields of the researcher.",
+                "levels": null,
+                "units": null
+            },
             "date_joined": {
                 "description": "Date the researcher joined the lab.",
                 "levels": null,
                 "units": null
-                },
+            },
             "is_active": {
                 "description": "Indicator is the researcher is still currently active in the project.",
                 "levels": null,
                 "units": null
-                },
+            },
             "first_name": {
                 "description": "First name of the researcher.",
                 "levels": null,
                 "units": null
-                },
+            },
             "last_name": {
                 "description": "Last name of the researcher.",
                 "levels": null,
                 "units": null
-                },
-            "latest_educational_qualification":  {
+            },
+            "latest_educational_qualification": {
                 "description": "Latest educational qualification.",
                 "levels": ["high_school", "bachelor", "master", "phd"]
             },
+            "education_level": {
+                "description": "",
+                "levels": ["None", "primary", "secondary", "undergraduate", "graduate"],
+                "units": null
+            },
+            "certifications": {
+                "description": "Additional certifications, e.g. FELASA B animal handling course",
+                "levels": null,
+                "units": null
+            },
             "position": {
                 "description": "Position held by the researcher in the lab.",
-                "levels": ["principal_investigator", "research_scientist",
-                           "phd_student", "postdoc", "research_assistant",
-                           "scientific_coordinator", "lab_manager", 
-                           "recruiter", "legal_representative", "data_manager",
-                            "bachelor_student", "master_student"],
+                "levels": [
+                    "principal_investigator",
+                    "research_scientist",
+                    "phd_student",
+                    "postdoc",
+                    "research_assistant",
+                    "scientific_coordinator",
+                    "lab_manager",
+                    "recruiter",
+                    "legal_representative",
+                    "data_manager",
+                    "bachelor_student",
+                    "master_student"
+                ],
                 "units": null
             },
             "contact_phone": {
                 "description": "Contact phone number.",
                 "levels": null,
                 "units": null
-                },
+            },
             "contact_email": {
                 "description": "Contact email address.",
                 "levels": null,
                 "units": null
-                },
+            },
             "contact_website": {
                 "description": "Contact website URL.",
                 "levels": null,
                 "units": null
-                },
+            },
             "contact_address": {
                 "description": "Contact address.",
                 "levels": null,
                 "units": null
-                },
+            },
             "projects": {
                 "description": "List of projects the researcher is a part of. The index of the projects should match the project_role field below.",
                 "levels": null,
                 "units": null
-                },
+            },
             "project_role": {
                 "description": "Role of the researcher in the project.",
                 "levels": null,
                 "units": null
-                },
+            },
             "sex": {
                 "description": "Sex of the subject",
                 "levels": ["female", "male", "other", "prefer not to answer"],
@@ -82,11 +116,6 @@
                 "description": "Age of the subject",
                 "levels": null,
                 "units": "years"
-            },
-            "education_level": {
-                "description": "",
-                "levels": ["None", "primary", "secondary", "undergraduate", "graduate"],
-                "units": null
             },
             "handedness": {
                 "description": "Handedness as self rated by participant",
@@ -112,7 +141,7 @@
                 "description": "Additional comments if any.",
                 "levels": null,
                 "units": null
-            }        
+            }
         },
         "custom": {},
         "bids": {}

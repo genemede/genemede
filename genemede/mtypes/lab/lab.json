@@ -1,8 +1,8 @@
 [
     {
         "guid": "",
-        "name": "",
-        "mtype": "lab",
+        "name": "lab",
+        "mtype": "mtype",
         "datetime": "",
         "description": "Category type for describing a laboratory.",
         "resources": {},
@@ -11,52 +11,49 @@
                 "description": "Official name of the lab.",
                 "levels": null,
                 "units": null
-                },
+            },
             "principal_investigator": {
                 "description": "Name of the principal investigator.",
                 "levels": null,
                 "units": null
-                },
+            },
             "institute": {
                 "description": "Name of the institution.",
                 "levels": null,
                 "units": null
-                },
+            },
             "department": {
                 "description": "Name of the department.",
                 "levels": null,
                 "units": null
-                },
+            },
             "location": {
                 "description": "Location of the institute and department.",
                 "levels": null,
                 "units": null
-                },
+            },
             "contact_phone": {
                 "description": "Contact telephone number.",
                 "levels": null,
                 "units": null
-                },
+            },
             "contact_email": {
                 "description": "Contact email.",
                 "levels": null,
                 "units": null
-                },
+            },
             "contact_website": {
                 "description": "Contact website.",
                 "levels": null,
                 "units": null
-                },
+            },
             "contact_address": {
                 "description": "Contact address.",
                 "levels": null,
                 "units": null
-                }
+            }
         },
         "custom": {},
-        "bids": {
-            "InstitutionName": "*properties.institute",
-            "InstitutionAddress": "*properties.contact_address"
-        }
+        "tags": {}
     }
 ]

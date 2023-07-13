@@ -1,0 +1,25 @@
+[
+    {
+        "guid": "",
+        "modified_at": "",
+        "name": "",
+        "mtype": "protocol",
+        "components": [],
+        "description": "Category type for describing a procedure.",
+        "resources": [{ "file": "" }],
+        "properties": {
+            "ordered": {
+                "description": "Whether the procedure is performed in order.",
+                "levels": ["True", "False"],
+                "units": null
+            },
+            "data_produced": {
+                "description": "Whether the procedure was data produced.",
+                "levels": ["True", "False"],
+                "units": null
+            }
+        },
+        "custom": {},
+        "tags": {}
+    }
+]

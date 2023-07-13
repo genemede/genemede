@@ -1,1 +1,0 @@
-This directory contains json files with category specific properties. Depending on the requirement, these files may be linked under category.resources in order to include additional properties to describe the category. 

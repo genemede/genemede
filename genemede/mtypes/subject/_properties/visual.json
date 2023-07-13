@@ -1,0 +1,27 @@
+{
+    "visual_correction_method": {
+        "description": "",
+        "levels": ["glasses", "contact lenses"],
+        "units": null
+    },
+    "visual_eye_dominance": {
+        "description": "Dominance of one eye over the other as self rated by participant",
+        "level": ["right", "left", "None"],
+        "units": null
+    },
+    "visual_lens_power_left": {
+        "description": "Numeric values indicating the power of the lens used to correct to normal vision in Diopters.",
+        "levels": null,
+        "units": ["+ Diopter", "- Diopter"]
+    },
+    "visual_lens_power_right": {
+        "description": "Numeric values indicating the power of the lens used to correct to normal vision in Diopters.",
+        "levels": null,
+        "units": ["+ Diopter", "- Diopter"]
+    },
+    "visual_colorblind": {
+        "description": "",
+        "levels": ["yes", "no"],
+        "units": null
+    }
+}
